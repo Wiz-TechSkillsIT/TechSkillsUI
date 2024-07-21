@@ -1,0 +1,73 @@
+.paj-panel {
+    width: 90%;
+    margin: 20px auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.rowpaj {
+    display: flex;
+    background-color: white;
+    margin-left: 25px;
+}
+
+.columnpaj {
+    padding: 10px;
+}
+
+.image-columnpaj {
+    width: 30%; /* Adjusted width for larger screens */
+    margin-top: 20px;
+    text-align: center; /* Center align image */
+}
+
+.image-columnpaj img {
+    width: 100%; /* Full width image within its container */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure image doesn't exceed its container width */
+}
+
+.text-columnpaj {
+    width: 70%; /* Adjusted width for larger screens */
+    text-align: justify; /* Justify text content */
+}
+
+.headingpaj {
+    margin-top: 20px;
+    font-family: cursive;
+    font-size: 1.8em;
+    color: black;
+}
+
+.para {
+    margin-top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.2em;
+}
+
+.headingpaj .highlight {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .rowpaj {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .image-columnpaj {
+        width: 70%; /* Enlarge image column width for smaller screens */
+        max-width: 100%; /* Ensure image column doesn't exceed container width */
+        margin-top: 0;
+    }
+
+    .image-columnpaj img {
+        width: 100%; /* Full width image on smaller screens */
+    }
+
+    .text-columnpaj {
+        width: 100%; /* Full width for text content on smaller screens */
+    }
+}

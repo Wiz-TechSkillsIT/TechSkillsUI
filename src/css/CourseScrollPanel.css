@@ -1,0 +1,149 @@
+/* src/CourseScrollPanel.css */
+.course-scroll-panel {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.courses-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 1rem 0;
+    margin: 0 2rem; /* Added margin for left and right space */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.courses-container::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.course-card {
+    flex: 0 0 22%; /* Ensure four cards fit within the panel */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.review-card {
+    flex: 0 0 100%; /* Ensure four cards fit within the panel */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 0.5rem;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.course-image {
+    width: 100%;
+    height: auto;
+}
+
+.course-title {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.course-description {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}   
+
+.scroll-button {
+    background-color: #fff;
+    border: 2px solid #ddd;
+    font-size: 2rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.scroll-button:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.scroll-button.left {
+    left: 0;
+}
+
+.scroll-button.right {
+    right: 0;
+}
+
+.scroll-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* src/Heading.css */
+.heading-container {
+    text-align: left;
+    margin: 0 auto;
+    width: 90%; /* Match the width of the course panel */
+    padding-left: 2rem; /* Ensure it aligns with the panel's content */
+    padding-right: 2rem;
+    padding-top: 2rem;
+}
+
+.heading-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    font-family: cursive; /* Use a custom font or import one from Google Fonts */
+}
+
+.heading-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 0.5rem 0;
+    border-radius: 0.5px;
+}
+
+
+@media (max-width: 1200px) {
+    .course-card {
+        flex: 0 0 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .course-card {
+        flex: 0 0 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .course-card {
+        flex: 0 0 90%;
+    }
+}
+

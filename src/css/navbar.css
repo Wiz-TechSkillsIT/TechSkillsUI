@@ -1,0 +1,45 @@
+/* App.css */
+
+a:hover{
+    text-decoration: none;
+}
+/* Increase the overall width of the MegaMenu dropdown */
+.custom-megamenu .p-megamenu-panel {
+    min-width: 700px; /* Adjust the width as needed */
+}
+
+/* Styling for the main menu items to ensure proper width */
+.custom-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link,
+.custom-megamenu .p-megamenu-panel .p-submenu-list .p-menuitem-link {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.5em 1em; /* Adjust padding as needed */
+    box-sizing: border-box;
+    position: relative;
+    text-decoration: none;
+}
+
+/* Override PrimeReact default hover */
+.custom-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:hover,
+.custom-megamenu .p-megamenu-panel .p-submenu-list .p-menuitem-link:hover {
+    background-color: inherit !important;
+    height: calc(100% + 10px);
+    
+}
+
+/* Custom hover effect */
+.custom-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:hover::after,
+.custom-megamenu .p-megamenu-panel .p-submenu-list .p-menuitem-link:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Adjust the width to cover the entire text */
+    height: 120%; /* Adjust the height as needed */
+    background-color: rgba(0, 0, 0, 0.1); /* Set the background color */
+    z-index: -1;
+    pointer-events: none; /* Ensure hover effect does not interfere with links */
+ 
+}

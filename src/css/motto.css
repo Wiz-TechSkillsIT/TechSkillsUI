@@ -1,0 +1,25 @@
+.cardmotto {
+    width: 80%;
+    margin: 10px auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.cardmotto img {
+    width: 100%; /* Ensure image fills its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .cardmotto {
+        flex-direction: column; /* Stack content vertically on small screens */
+        align-items: center; /* Center align items */
+    }
+
+    .cardmotto img {
+        width: 90%; /* Adjust image width for readability */
+        max-width: 100%; /* Ensure image doesn't exceed container width */
+        margin-bottom: 10px; /* Add space between image and text */
+    }
+}

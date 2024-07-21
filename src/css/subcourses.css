@@ -1,0 +1,136 @@
+.course-list123 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.course-card123 {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    flex-direction: row; /* Ensures the card content is displayed in a row */
+}
+
+.course-tag {
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.2em;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 20px;
+}
+
+.free {
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+
+.premium {
+    background: radial-gradient(circle, rgba(255,204,128,1) 0%, rgba(255,153,102,1) 100%);
+}
+
+.course-content {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    color: darkslategrey;
+}
+
+.course-content h3 {
+    margin: 0;
+    font-size: 1.5em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.course-content p {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.course-label {
+    display: inline-block;
+    background: #a9938f;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+.course-button {
+    background: #859fbb;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: auto; /* Ensures it sticks to the bottom */
+    transition: background 0.3s ease;
+    align-self: flex-end; /* Aligns to the end of the flex container */
+    
+    /* Absolute positioning for bottom-right corner */
+    position: absolute;
+    bottom: 10px; /* Adjust as necessary */
+    right: 10px; /* Adjust as necessary */
+    width: 25%;
+
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        width: 100%; /* Full width for small screens */
+        max-width: 200px; /* Limit maximum width for smaller screens */
+        right: 0; /* Align to the right edge */
+    }
+}
+
+
+.course-price {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #32cd32;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+    .course-card123 {
+        flex-direction: column; /* Stack cards vertically */
+    }
+
+    .course-tag {
+        flex: 1; /* Take full width on small screens */
+        margin: 0 auto 10px; /* Center horizontally and add spacing */
+    }
+
+    .course-button {
+        position: relative; /* Reset to default positioning */
+        align-self: stretch; /* Stretch button to full width */
+        margin-top: 10px; /* Add spacing between buttons */
+    }
+
+    .course-price {
+        position: relative; /* Reset to default positioning */
+        top: auto;
+        right: auto;
+        margin-top: 10px; /* Add spacing between price and content */
+        text-align: center; /* Center price */
+    }
+
+    
+}
