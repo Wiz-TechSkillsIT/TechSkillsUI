@@ -43,7 +43,7 @@ const LearningTrack = () =>{
     return(
         <div>
              <div className="heading-container">
-            <p className="heading-text">Learning Tracks</p>
+            {/* <p className="heading-text">Learning Tracks</p> */}
             
         </div>
 
