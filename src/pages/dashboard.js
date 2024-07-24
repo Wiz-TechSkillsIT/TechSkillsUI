@@ -22,7 +22,7 @@ function Dashboard(){
     },[list.length])
 
     return (
-         <div>
+         <div style={{backgroundColor: 'bisque'}}>
                 {
                    list.length === 1?
                     <div>
@@ -30,13 +30,12 @@ function Dashboard(){
                     </div>
                      : ''
                 }
-
-            <LearningTrack />
-            <Motto />
-            <LearnByDoingIt />
-            <ReviewsCommon />
-            <PajDashboard />
-         </div>
+             <div><LearningTrack /></div>  
+             <div><Motto /></div>  
+             <div><PajDashboard /></div>  
+             <div><LearnByDoingIt /></div>  
+             <div><ReviewsCommon /></div>  
+           </div>
     )
 }
         

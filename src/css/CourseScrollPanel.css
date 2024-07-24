@@ -113,11 +113,11 @@
 }
 
 .heading-text {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
     margin: 0;
-    color: #333;
-    font-family: cursive; /* Use a custom font or import one from Google Fonts */
+    color: #a15353;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a custom font or import one from Google Fonts */
+    text-align: center;
 }
 
 .heading-divider {

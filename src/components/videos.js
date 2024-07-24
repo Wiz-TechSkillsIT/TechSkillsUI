@@ -140,6 +140,23 @@ function Videos(props){
         </>
     );
 
+    const iframeSrc = "https://player.vdocipher.com/v2/?otp=20160313versASE323ii63GgWsx6PB6mXvEGmrdrYtC9PPD69HzvOfbbgpJNYAOG&playbackInfo=eyJ2aWRlb0lkIjoiNDBjOTg1ODc5ZDQ1NmE3NWIzYzNlMDk4Nzg4NjAzN2IifQ==";
+
+  const iframeStyle = {
+    border: 0,
+    maxWidth: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '100%'
+  };
+
+  const containerStyle = {
+    paddingTop: '41%',
+    position: 'relative'
+  };
+
     return (
         <div className="app">
              
@@ -179,7 +196,16 @@ function Videos(props){
 
                                     </Card>
                              </div> : 
-                            <div>{videoCode}</div>
+                            <div>
+                                        <div style={containerStyle}>
+                                            <iframe
+                                                src={iframeSrc}
+                                                style={iframeStyle}
+                                                allowFullScreen
+                                                allow="encrypted-media"
+                                            />
+    </div>
+                            </div>
                         }
                         
                     </div>

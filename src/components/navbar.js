@@ -101,7 +101,7 @@ export default function Navbar(){
          </div>
     );
     return (
-        <div className="card">
+        <div className="card"  style={{backgroundColor: 'bisque'}}>
              
             <MegaMenu model={items} breakpoint="960px" start={start} end={end}  className="custom-megamenu" />
         </div>

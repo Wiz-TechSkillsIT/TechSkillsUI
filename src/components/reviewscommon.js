@@ -125,7 +125,7 @@ function ReviewsCommon(){
     return( 
         <div >
             <div className="heading-container">
-            <p className="heading-text">Reviews of our past trainees</p>
+            <p className="heading-text"> Reviews of our past trainees</p>
             
         </div>
         <div className="course-scroll-panel">

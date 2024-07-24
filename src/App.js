@@ -10,9 +10,11 @@ import CourseVideos from './pages/coursevideos';
 import { Provider } from 'react-redux';
 import store from './store';
 import UserDashboard from './pages/userdashboard';
+import Footer from './components/footer';
 
 function App() {
   return (
+    <div> 
     <Provider store={store}> 
     <PrimeReactProvider>
       <Navbar />
@@ -23,9 +25,10 @@ function App() {
         <Route path='/course-videos' element={<CourseVideos /> } />
         <Route path='/auth' element={<Auth />} />
       </Routes>
-         
+         <Footer />
     </PrimeReactProvider>
     </Provider>
+    </div>
   );
 }
 

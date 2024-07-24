@@ -1,34 +1,38 @@
 .learn-panel {
-    width: 90%;
+    width: 75%;
     margin: 0 auto;
     position: relative;
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    background-color: bisque;
+    justify-content: center;
+    
 }
 .row1 {
     display: flex;
-    background-color: white;
-    margin-left: 25px;
-    
-}
+ }
 
 .column1 {
     padding: 10px;
+    
 }
-
-.image-column1 {
-    width: 30%;
-    margin-top: 20px;
+.learn-card {
+    flex: 0 0 22%; /* Ensure four cards fit within the panel */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 2rem;
+    background: #efefef;
+    border-radius: 8px;
+    margin-top: 50px;
 }
-
-.image-column1 img {
-    width: 100%;
-    height: auto;
-}
-
+ 
+ 
 .text-column1 {
-    width: 70%;
+    width: 100%;
+   
 }
 
 .heading1 {
@@ -36,6 +40,7 @@
     font-family: cursive;
     font-size: 1.5em;
     color: black;
+    margin-bottom: 10px;
 
 }
 
@@ -44,9 +49,7 @@
     color: brown;
 }
 
-.para {
-    margin-top: 0;
-    margin-top: 10px;
+.para { 
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.2em;
 }
@@ -62,12 +65,7 @@
         align-items: center; /* Align items (including the image) in the center */
         justify-content: center; /* Justify content (text) in the center */
     }
-
-    .image-column1 {
-        width: 70%; /* Adjust width of the image column as needed */
-        margin-top: 0;
-    }
-
+ 
     .text-column1 {
         width: 100%;
         text-align: left; /* Justify the text content */
