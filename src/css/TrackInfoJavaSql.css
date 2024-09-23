@@ -1,0 +1,270 @@
+.trackinfo-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #fee4c3;
+    padding: 40px 20px;
+}
+
+/* Header Section */
+.trackinfo-header {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #2c3e50;
+    font-family: 'Cambria', serif;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.trackinfo-subheader {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Button Section */
+.trackinfo-button-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.trackinfo-enroll-button,
+.trackinfo-reviews-button {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+    min-width: 150px; /* Ensure buttons are aligned properly */
+}
+
+.trackinfo-enroll-button:hover {
+    background-color: #d35400;
+}
+
+.trackinfo-reviews-button {
+    background-color: #2980b9; /* Different color for the Reviews button */
+}
+
+.trackinfo-reviews-button:hover {
+    background-color: #1f6b9a;
+}
+
+/* Course Section */
+.trackinfo-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+    padding: 20px;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.trackinfo-section:nth-child(even) {
+    flex-direction: row-reverse; /* Zig-zag for even sections on larger screens */
+}
+
+.trackinfo-image {
+    flex: 1;
+    padding: 10px;
+    max-width: 50%;
+}
+
+.trackinfo-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.trackinfo-content {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.trackinfo-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.trackinfo-description {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.trackinfo-highlights {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Review Scroller */
+.trackinfo-reviews {
+    text-align: center;
+    background-color: #fee4c3;
+    padding: 40px 20px;
+    margin: 60px 0;
+    position: relative;
+}
+
+.trackinfo-review-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.trackinfo-review-scroller {
+    position: relative;
+    overflow: hidden;
+}
+
+.trackinfo-review-scroller-inner {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+    padding-bottom: 10px;
+    width: max-content;
+    overflow: hidden; /* Limit scrolling to one at a time */
+}
+
+.trackinfo-review-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    min-width: 300px;
+    max-width: 320px;
+    flex: 0 0 100%; /* Show one card at a time */
+    box-sizing: border-box;
+}
+
+.trackinfo-review-text {
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.trackinfo-review-company {
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.trackinfo-review-name {
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Arrow styles */
+.trackinfo-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.trackinfo-arrow-left {
+    left: 10px;
+}
+
+.trackinfo-arrow-right {
+    right: 10px;
+}
+
+.trackinfo-arrow svg {
+    width: 24px;
+    height: 24px;
+}
+
+.key-highlights ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0;
+    line-height: 1.8;
+}
+
+.key-highlights li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.key-highlights li span {
+    margin-right: 10px;
+    color: #ff6b6b;
+    font-size: 18px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .trackinfo-section {
+        flex-direction: column; /* Stack the content vertically */
+        text-align: center;
+        justify-content: flex-start;
+    }
+
+    .trackinfo-image {
+        order: 3; /* Display image after title and description */
+        max-width: 100%; /* Ensure image is visible and takes full width */
+        margin-bottom: 20px;
+    }
+
+    .trackinfo-title {
+        order: 1; /* Title comes first */
+    }
+
+    .trackinfo-description {
+        order: 2; /* Description follows title */
+    }
+
+    .key-highlights {
+        order: 4; /* Key highlights come last */
+    }
+
+    .trackinfo-content {
+        padding: 10px;
+    }
+
+    /* Adjust buttons */
+    .trackinfo-enroll-button,
+    .trackinfo-reviews-button {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    /* Review Section */
+    .trackinfo-review-scroller-inner {
+        display: flex;
+        gap: 20px;
+        flex-direction: row;
+        transition: transform 0.5s ease;
+        padding-bottom: 10px;
+        width: max-content;
+        justify-content: center;
+    }
+
+    .trackinfo-review-card {
+        flex: 0 0 100%; /* Show one card at a time */
+    }
+
+    .trackinfo-arrow-left,
+    .trackinfo-arrow-right {
+        top: 40%; /* Adjust position for mobile view */
+    }
+}

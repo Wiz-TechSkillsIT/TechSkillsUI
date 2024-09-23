@@ -6,7 +6,10 @@
     display: flex;
     align-items: center;
 }
-
+.course-card {
+    cursor: pointer; /* This makes the cursor behave like a link */
+    /* Other styles for the card */
+}
 .courses-container {
     display: flex;
     overflow-x: scroll;

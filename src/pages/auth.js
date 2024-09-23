@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
    
     return (
       <div className='card_login'>
+         
         <div class="column-auth column-left">
              <Motto />
         </div>

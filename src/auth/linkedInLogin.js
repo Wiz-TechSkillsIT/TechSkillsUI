@@ -4,7 +4,6 @@ import linkedin from 'react-linkedin-login-oauth2/assets/linkedin.png';
 
 const LinkedInLogin = () => {
   
-
   return (
     <div>
        <LinkedIn

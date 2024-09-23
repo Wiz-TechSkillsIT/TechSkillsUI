@@ -1,45 +1,46 @@
-/* App.css */
-
-a:hover{
+/* Reset the text and link styles */
+a:hover {
     text-decoration: none;
 }
-/* Increase the overall width of the MegaMenu dropdown */
+
+/* Restore the background for the entire MegaMenu dropdown panel */
 .custom-megamenu .p-megamenu-panel {
-    min-width: 700px; /* Adjust the width as needed */
+    background-color: #fff !important; /* White background for the panel */
+    min-width: 900px !important; /* Ensure enough width for long text */
+    border-radius: 4px; /* Optional: border-radius */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 10px 20px; /* Add padding for space */
 }
 
-/* Styling for the main menu items to ensure proper width */
-.custom-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link,
-.custom-megamenu .p-megamenu-panel .p-submenu-list .p-menuitem-link {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 0.5em 1em; /* Adjust padding as needed */
-    box-sizing: border-box;
-    position: relative;
-    text-decoration: none;
+/* Make sure the text is fully visible and stays on a single line */
+.custom-megamenu .p-menuitem-link {
+    display: inline-block; /* Keep inline for hover effects */
+    width: auto; /* Allow for auto width to fit the text */
+    padding: 0.5em 1em; /* Add padding around the text */
+    background-color: transparent !important; /* No background by default */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: visible; /* Ensure text is fully visible */
+    text-overflow: clip; /* Remove ellipsis */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
-/* Override PrimeReact default hover */
-.custom-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:hover,
-.custom-megamenu .p-megamenu-panel .p-submenu-list .p-menuitem-link:hover {
-    background-color: inherit !important;
-    height: calc(100% + 10px);
-    
+/* Apply the custom hover effect with full width */
+.custom-megamenu .p-menuitem-link:hover {
+    background-color: #edeffb !important; /* Apply the hover background */
+    border-radius: 4px; /* Optional: round the corners */
+    display: inline-block; /* Ensure hover behavior is consistent */
+    width: auto; /* Ensure the background covers just the text */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover transition */
 }
 
-/* Custom hover effect */
-.custom-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:hover::after,
-.custom-megamenu .p-megamenu-panel .p-submenu-list .p-menuitem-link:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%; /* Adjust the width to cover the entire text */
-    height: 120%; /* Adjust the height as needed */
-    background-color: rgba(0, 0, 0, 0.1); /* Set the background color */
-    z-index: -1;
-    pointer-events: none; /* Ensure hover effect does not interfere with links */
- 
+/* Remove any conflicting background or margin from parent items */
+.custom-megamenu .p-menuitem {
+    background-color: transparent !important; /* Remove any parent background */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Ensure no conflicting backgrounds on submenu items */
+.custom-megamenu .p-menuitem-link::before {
+    background-color: transparent !important; /* Remove any default background */
 }

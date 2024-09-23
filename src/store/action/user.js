@@ -1,11 +1,16 @@
-export const addUser = (user)=> (dispatch)=>{
-    //call the api 
+// actions/userActions.js
 
-    console.log('In action ' +user)
-    dispatch( {
+export const addUser = (user) => (dispatch) => {
+    console.log('In action ' + user);
+    dispatch({
         type: 'LOGIN',
-        payload : user
-    })
-}
+        payload: user
+    });
+};
 
- 
+export const logoutUser = () => (dispatch) => {
+    console.log('User logging out');
+    dispatch({
+        type: 'LOGOUT'
+    });
+};
