@@ -16,7 +16,7 @@ const LearningTrack = () => {
             title: 'Java Backend Developer',
             image: './images/springboot.png',
             description: 'Enterprise grade REST apis with Spring boot and AWS',
-            link: '/java-backend',
+            link: '/spring-boot-with-aws',
         },
         {
             title: 'MERN Stack',

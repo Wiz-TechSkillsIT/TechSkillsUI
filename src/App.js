@@ -16,6 +16,8 @@ import TrackInfoJavaSql from './components/trackinfojavasql';
 import PrivacyPolicy from './components/privacyPolicy';
 import TermsAndConditions from './components/terms';
 import CourseCheckout from './components/courseCheckout';
+import SpringBootWithAWS from './components/springbootwithaws';
+import MernStack from './components/mernstack';
 
 function App() {
   const location = useLocation();
@@ -27,6 +29,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Dashboard />} />
         <Route path='/track-info-java-sql' element={<TrackInfoJavaSql />} />
+        <Route path='/spring-boot-with-aws' element={<SpringBootWithAWS />} />
+        <Route path='/mern-stack' element={<MernStack />} />
         <Route path='/user-dashboard' element={<UserDashboard />} />
         <Route path='/course-details' element={<CourseDetails /> } />
         <Route 
