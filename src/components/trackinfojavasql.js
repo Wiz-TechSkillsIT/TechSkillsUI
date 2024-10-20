@@ -3,9 +3,21 @@ import '../css/TrackInfoJavaSql.css';
 import { useNavigate } from 'react-router';
 import EnquireModal from './EnquireModal';
 import FeeModal from './FeeModal';
+import Slider from "react-slick";
 
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1, // Show only one review card at a time (good for mobile)
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000, // 3-second interval
+};
 const TrackInfoJavaSql = () => {
   const reviewsRef = useRef(null);
+  const outcomeRef = useRef(null); // Ref for the outcome section
+
   const [scrollPosition, setScrollPosition] = useState(0);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
@@ -32,7 +44,7 @@ const TrackInfoJavaSql = () => {
 
   const sections = [
     {
-      title: 'Level 1 : Console based App with Java Programming',
+      title: 'Level 1 : Console based App with Core Java',
       description: 'Focus: Java fundamentals, Object-Oriented Programming, Exception Handling, File Handling and JDBC.',
       image: './images/java_exception.png',
       project: 'Project: Student Management System (console-based)'
@@ -94,11 +106,14 @@ const TrackInfoJavaSql = () => {
     reviewsRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToOutcome = () => {
+    outcomeRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <div className="trackinfo-page">
       {/* Header */}
       <div className="trackinfo-header ">
-        Java Programming to Spring Boot and AWS 
+        Core Java Programming with Spring Boot and AWS 
       </div>
 
       {/* Subheader */}
@@ -111,15 +126,17 @@ const TrackInfoJavaSql = () => {
       </div>
       {/* Button Wrapper */}
       <div className="trackinfo-button-wrapper">
+      <div class="button-group">
         <button className="trackinfo-enroll-button" onClick={() => navigate('/checkout')}>
           Start Level 1 for free 
         </button>
-        <button className="trackinfo-outcome-button" onClick={scrollToReviews}>
+        <button className="trackinfo-outcome-button" onClick={scrollToOutcome}>
           Outcome
         </button>
         <button className="trackinfo-reviews-button" onClick={scrollToReviews}>
           Reviews
         </button>
+        </div>
       </div>
   {/* Course Sections */}
       {sections.map((section, index) => (
@@ -133,7 +150,7 @@ const TrackInfoJavaSql = () => {
             <div className="trackinfo-description">{section.project}</div>
 
             <ul>
-              {section.title === 'Level 1 : Console based App with Java Programming' && (
+              {section.title === 'Level 1 : Console based App with Core Java' && (
                 <div className="key-highlights" style={{ marginTop: '20px' }}>
                   <h3>Key Highlights:</h3>
                   <ul>
@@ -200,23 +217,23 @@ const TrackInfoJavaSql = () => {
                        <h3> Level Outcome: </h3>  
                        <span className="  outcome">After Level 2, you will be able to build secure, data-driven RESTful APIs with Spring Boot, manage databases using JPA, and implement role-based authentication.</span>
                     </span>
-                    <span>
-                    <br /><br />
-                    <button onClick={openWhatsApp} style={{ padding: '10px 20px', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Enquire on WhatsApp 
-                      </button>
-                      &nbsp;&nbsp;
-                      <button onClick={openModal} style={{ padding: '10px 20px', backgroundColor: '#63bdd6', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Enquire on Email
-                      </button>
-                      {/* Modal Component */}
-                      <EnquireModal isOpen={isModalOpen} onClose={closeModal} subject={subject} />
+                  
+                    <div class="button-group"> 
+
+<button  className="trackinfo-whatsapp-button" onClick={openWhatsApp}  >
+    Enquire on WhatsApp 
+  </button>
+   
+  <button className="trackinfo-email-button" onClick={openModal}  >
+    Enquire on Email
+  </button>
+  {/* Modal Component */}
+  <EnquireModal isOpen={isModalOpen} onClose={closeModal} subject={subject} />
  
-                      &nbsp;&nbsp;
-                      <button onClick={openFeeModal} style={{ padding: '10px 20px', backgroundColor: '#b4336f', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Fee Info
-                      </button>
-                    </span>
+  <button className="trackinfo-fee-button" onClick={openFeeModal}  >
+    Fee Info
+  </button>
+</div>
                     {/* Fee Modal Component */}
       <FeeModal isOpen={isFeeModalOpen} onClose={closeFeeModal} />
                 </div>
@@ -250,22 +267,24 @@ const TrackInfoJavaSql = () => {
                   <div >
                 <span>
                        <h3> Level Outcome: </h3>  
-                       <span className="  outcome">By completing Level 3, you will master microservices architecture, secure APIs with JWT, and integrate AWS services like DynamoDB, SQS, SES, RDS and S3.</span>
+                       <span className="outcome">By completing Level 3, you will master microservices architecture, secure APIs with JWT, and integrate AWS services like DynamoDB, SQS, SES, RDS and S3.</span>
                     </span>
-                    <span>
-                    <br /><br />
-                    <button onClick={openWhatsApp} style={{ padding: '10px 20px', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Enquire on WhatsApp 
-                      </button>
-                      &nbsp;&nbsp;
-                      <button onClick={openWhatsApp} style={{ padding: '10px 20px', backgroundColor: '#63bdd6', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Enquire on Email
-                      </button>
-                      &nbsp;&nbsp;
-                      <button onClick={openWhatsApp} style={{ padding: '10px 20px', backgroundColor: '#b4336f', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-                        Fee Info
-                      </button>
-                    </span>
+                    <div class="button-group"> 
+
+<button  className="trackinfo-whatsapp-button" onClick={openWhatsApp}  >
+    Enquire on WhatsApp 
+  </button>
+   
+  <button className="trackinfo-email-button" onClick={openModal}  >
+    Enquire on Email
+  </button>
+  {/* Modal Component */}
+  <EnquireModal isOpen={isModalOpen} onClose={closeModal} subject={subject} />
+ 
+  <button className="trackinfo-fee-button" onClick={openFeeModal}  >
+    Fee Info
+  </button>
+</div>
                 </div>
                 </div>
               )}
@@ -274,7 +293,7 @@ const TrackInfoJavaSql = () => {
         </div>
       ))}
 
-<div className="trackinfo-outcome">
+<div className="trackinfo-outcome" ref={outcomeRef}>
            
           <div className="trackinfo-content">
             <div className="trackinfo-title">Course Outcome</div>
@@ -313,33 +332,20 @@ const TrackInfoJavaSql = () => {
           </div>
         </div>
       {/* Reviews Section */}
-      <div className="trackinfo-reviews">
-        <div className="trackinfo-review-title">What Our Students Say</div>
-
-        {showLeftArrow && (
-          <button className="trackinfo-arrow trackinfo-arrow-left" onClick={() => handleScroll('left')}>
-            <svg viewBox="0 0 24 24"><path d="M15.41 16.58L10.83 12l4.58-4.59L14 6l-6 6 6 6z" /></svg>
-          </button>
-        )}
-
-        <div className="trackinfo-review-scroller" ref={reviewsRef}>
-          <div className="trackinfo-review-scroller-inner">
-            {reviews.map((review, index) => (
-              <div className="trackinfo-review-card" key={index}>
-                <div className="trackinfo-review-text">"{review.text}"</div>
-                <div className="trackinfo-review-company">{review.company}</div>
-                <div className="trackinfo-review-name">- {review.name}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {showRightArrow && (
-          <button className="trackinfo-arrow trackinfo-arrow-right" onClick={() => handleScroll('right')}>
-            <svg viewBox="0 0 24 24"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z" /></svg>
-          </button>
-        )}
+      <div className="trackinfo-reviews" ref={reviewsRef}>
+      <div className="trackinfo-review-title">What Our Students Say</div>
+      <div className="trackinfo-review-scroller">
+        <Slider {...settings}>
+          {reviews.map((review, index) => (
+            <div className="trackinfo-review-card" key={index}>
+              <div className="trackinfo-review-text">"{review.text}"</div>
+              <div className="trackinfo-review-company">{review.company}</div>
+              <div className="trackinfo-review-name">- {review.name}</div>
+            </div>
+          ))}
+        </Slider>
       </div>
+    </div>
     </div>
   );
 };

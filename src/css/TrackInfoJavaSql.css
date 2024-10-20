@@ -32,6 +32,7 @@
   .outcome{
     font-size: 1.5 em;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
   }
 .trackinfo-started-button{
     background-color: #4aa7c1;
@@ -86,10 +87,11 @@
 .trackinfo-section {
     display: flex;
     align-items: center;
-    margin-bottom: 60px;
+     
     padding: 20px;
     justify-content: space-between;
     flex-direction: row;
+    margin-bottom: 80px;
 }
 
 .trackinfo-section:nth-child(even) {
@@ -110,7 +112,7 @@
 
 .trackinfo-content {
     flex: 1;
-    padding: 20px;
+    padding: 30px;
     text-align: left;
 }
 
@@ -134,63 +136,48 @@
     margin-bottom: 10px;
 }
 
-/* Review Scroller */
+/* Review Section Styling */
 .trackinfo-reviews {
     text-align: center;
     background-color: #fee4c3;
     padding: 40px 20px;
     margin: 60px 0;
     position: relative;
-}
-
-.trackinfo-review-title {
+  }
+  
+  .trackinfo-review-title {
     font-size: 2em;
     margin-bottom: 20px;
     color: #333;
-}
-
-.trackinfo-review-scroller {
-    position: relative;
-    overflow: hidden;
-}
-
-.trackinfo-review-scroller-inner {
-    display: flex;
-    gap: 20px;
-    transition: transform 0.5s ease;
-    padding-bottom: 10px;
-    width: max-content;
-    overflow: hidden; /* Limit scrolling to one at a time */
-}
-
-.trackinfo-review-card {
+  }
+  
+  .trackinfo-review-card {
     background-color: white;
     border-radius: 10px;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    min-width: 300px;
-    max-width: 320px;
-    flex: 0 0 100%; /* Show one card at a time */
+    padding: 30px; /* Increase padding */
+    min-width: 320px; /* Adjust the minimum width */
+    max-width: 350px; /* Adjust the maximum width */
     box-sizing: border-box;
-}
-
-.trackinfo-review-text {
-    font-style: italic;
-    margin-bottom: 10px;
+    margin: 0 auto; /* Center the card */
+  }
+  
+  .trackinfo-review-text {
+    font-size: 1.1em; /* Increase font size for readability */
+    margin-bottom: 15px;
     color: #555;
-}
-
-.trackinfo-review-company {
-    font-weight: bold;
-    color: #777;
-    margin-bottom: 10px;
-}
-
-.trackinfo-review-name {
+  }
+  
+  .trackinfo-review-company,
+  .trackinfo-review-name {
+    font-size: 1.1em; /* Increase font size */
+  }
+  
+  .trackinfo-review-name {
     font-weight: bold;
     color: #333;
     margin-top: 10px;
-}
+  }
 
 /* Arrow styles */
 .trackinfo-arrow {
@@ -237,60 +224,134 @@
     font-size: 18px;
 }
 
+/* General button styling */
+.button-group {
+    display: flex;
+    flex-direction: row; /* Display buttons in a row for larger screens */
+    gap: 10px; /* Add space between buttons */
+    margin-bottom: 20px; /* Add space between button groups */
+    justify-content: center; /* Center the buttons horizontally */
+  }
+  
+  .button-group button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Add space above the button */
+  }
+  
+  /* Button colors for different actions */
+.trackinfo-enroll-button {
+    background-color: #e67e22;
+  }
+  
+  .trackinfo-outcome-button {
+
+    background-color: #2b9e74;
+  }
+  
+  .trackinfo-reviews-button {
+    background-color: #2980b9;
+  }
+  
+  .trackinfo-whatsapp-button {
+    background-color: #25D366;
+  }
+  
+  .trackinfo-email-button {
+    background-color: #63bdd6;
+  }
+  
+  .trackinfo-fee-button {
+    background-color: #b4336f;
+  }
+  
+  
+/* Hover effects */
+.trackinfo-enroll-button:hover {
+    background-color: #d35400;
+  }
+  
+  .trackinfo-outcome-button:hover {
+    background-color: #1e7856;
+  }
+  
+  .trackinfo-reviews-button:hover {
+    background-color: #1f6b9a;
+  }
+  
+  .trackinfo-whatsapp-button:hover {
+    background-color: #1eb853;
+  }
+  
+  .trackinfo-email-button:hover {
+    background-color: #4da7c4;
+  }
+  
+  .trackinfo-fee-button:hover {
+    background-color: #99285a;
+  }
+  
+  
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .trackinfo-section {
-        flex-direction: column; /* Stack the content vertically */
+        flex-direction: column; /* Stack content vertically */
         text-align: center;
-        justify-content: flex-start;
-    }
-
-    .trackinfo-image {
-        order: 3; /* Display image after title and description */
-        max-width: 100%; /* Ensure image is visible and takes full width */
+        margin-bottom: 60px;
+      }
+    
+      .trackinfo-section:nth-child(even) {
+        flex-direction: column; /* Remove zig-zag for even sections on mobile */
+      }
+    
+      .trackinfo-image {
+        order: 1;
+        max-width: 100%;
         margin-bottom: 20px;
-    }
-
-    .trackinfo-title {
-        order: 1; /* Title comes first */
-    }
-
-    .trackinfo-description {
-        order: 2; /* Description follows title */
-    }
-
-    .key-highlights {
-        order: 4; /* Key highlights come last */
-    }
-
-    .trackinfo-content {
-        padding: 10px;
-    }
-
-    /* Adjust buttons */
-    .trackinfo-enroll-button,
-    .trackinfo-reviews-button {
-        width: 100%;
-        padding: 10px 0;
-    }
-
-    /* Review Section */
-    .trackinfo-review-scroller-inner {
-        display: flex;
-        gap: 20px;
-        flex-direction: row;
-        transition: transform 0.5s ease;
-        padding-bottom: 10px;
-        width: max-content;
-        justify-content: center;
-    }
-
-    .trackinfo-review-card {
+      }
+    
+      .trackinfo-content {
+        order: 2;
+        padding: 20px;
+      }
+    
+      .key-highlights {
+        order: 3;
+        text-align: left;
+      }
+    
+      /* Adjust buttons for mobile */
+      .button-group {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+        align-items: center; /* Center align the buttons */
+      }
+    
+      .button-group button {
+        width: 100%; /* Make buttons take full width */
+        margin-bottom: 10px; /* Add spacing between buttons */
+      }
+    
+      /* Review Section */
+      .trackinfo-review-card {
         flex: 0 0 100%; /* Show one card at a time */
-    }
-
-    .trackinfo-arrow-left,
-    .trackinfo-arrow-right {
-        top: 40%; /* Adjust position for mobile view */
-    }
+        padding: 20px;
+    min-width: 100%; /* Ensure the card takes full width on mobile */
+      }
+    
+      /* Make sure the slider shows only one card */
+      .trackinfo-review-scroller-inner {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+      }
+    
+      .trackinfo-review-title {
+        font-size: 1.5em; /* Adjust title size for mobile */
+        margin-bottom: 15px;
+      }
 }
