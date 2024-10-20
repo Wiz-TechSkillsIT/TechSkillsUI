@@ -6,36 +6,42 @@ const LearningTrack = () => {
     const navigate = useNavigate();
     
     const courses = [
+        
         {
-            title: 'Core Java with SQL',
-            image: './images/corejava.png',
-            description: 'Make console based apps with Java and SQL',
-            link: '/track-info-java-sql', // Add your respective routes here
-        },
-        {
-            title: 'Java Backend Developer',
-            image: './images/springboot.png',
-            description: 'Enterprise grade REST apis with Spring boot and AWS',
-            link: '/spring-boot-with-aws',
-        },
-        {
-            title: 'MERN Stack',
-            image: './images/mern_stack.png',
-            description: 'Create Web Apps with React UI, Node API and MongoDB',
-            link: '/mern-stack',
-        },
-        {
-            title: 'MEAN Stack',
-            image: './images/mean_stack.png',
-            description: 'Create Web Apps with Angular UI, Node API and MongoDB',
-            link: '/mean-stack',
-        },
-        {
-            title: 'Full Stack Java Developer',
+            title: 'Java to Spring Boot & AWS',
             image: './images/java_full_stack.png',
-            description: 'Spring MVC Framework with J2EE based UI',
-            link: '/full-stack-java',
+            description: 'Master Java programming from OOPs to advanced Spring Boot with AWS.',
+            link: '/track-info-java-sql',
+            levels: 'Levels 1 (Free), 2, 3'
         },
+        {
+            title: 'Node.js API Developer',
+            image: './images/nodejs.png',
+            description: 'Learn Node.js and build REST APIs, full-stack apps, and secure microservices.',
+            link: '/mern-stack',
+            levels: 'Levels 1 (Free), 2, 3'
+        },
+        {
+            title: 'React Development',
+            image: './images/react.png',
+            description: 'Become a job-ready React developer by mastering the latest React and Redux with projects.',
+            link: '/mean-stack',
+            levels: 'Levels 1 (Free), 2, 3'
+        },
+        {
+            title: 'Angular Development',
+            image: './images/angular.png',
+            description: 'Learn Angular 18 from fundamentals to advanced concepts and real-world projects.',
+            link: '/full-stack-java',
+            levels: 'Levels 1 (Free), 2, 3'
+        },
+        {
+            title: 'Database Programming',
+            image: './images/sql.png',
+            description: 'Learn SQL and NoSQL databases, optimized queries, and scaling techniques.',
+            link: '/track-info-java-sql', // Add your respective routes here
+            levels: 'Levels 1 (Free), 2'
+        }
     ];
 
     const handleCardClick = (link) => {
@@ -66,8 +72,9 @@ const LearningTrack = () => {
                             onClick={() => handleCardClick(course.link)} // Handle click
                         >
                             <img src={course.image} alt={course.title} className="course-image" />
-                            <div className="course-title">{course.title}</div>
-                            <div className="course-description">{course.description}</div>
+                             <div className="course-description">{course.description}</div>
+                            <div className="course-levels">{course.levels}</div>
+
                         </div>
                     ))}
                 </div>

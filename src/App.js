@@ -18,11 +18,16 @@ import TermsAndConditions from './components/terms';
 import CourseCheckout from './components/courseCheckout';
 import SpringBootWithAWS from './components/springbootwithaws';
 import MernStack from './components/mernstack';
+import SpringBootDetails from './pages/SpringBootDetails';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 function App() {
   const location = useLocation();
   return (
     <div> 
+      <GoogleReCaptchaProvider
+      reCaptchaKey="6Ld0FmcqAAAAAGbEOn7GUWGLEwlVUl2NcQs-elNl"  
+    >
     <Provider store={store}> 
     <PrimeReactProvider>
       <Navbar />
@@ -32,7 +37,7 @@ function App() {
         <Route path='/spring-boot-with-aws' element={<SpringBootWithAWS />} />
         <Route path='/mern-stack' element={<MernStack />} />
         <Route path='/user-dashboard' element={<UserDashboard />} />
-        <Route path='/course-details' element={<CourseDetails /> } />
+        <Route path='/course-details-java-spring-boot' element={<SpringBootDetails /> } />
         <Route 
                     path="/course-videos" 
                     element={
@@ -49,6 +54,7 @@ function App() {
          <Footer />
     </PrimeReactProvider>
     </Provider>
+    </GoogleReCaptchaProvider>
     </div>
   );
 }

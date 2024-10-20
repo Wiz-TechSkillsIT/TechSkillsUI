@@ -95,18 +95,20 @@ const SpringBootWithAWS = () => {
         <div className="trackinfo-page">
            {/* Header */}
 <div className="trackinfo-header">
-Spring Boot & AWS Mastery: REST APIs, Microservices, and Cloud Integration
+Java to Spring Boot and AWS
 </div>
 
 {/* Subheader */}
 <div className="trackinfo-subheader">
-In this course, you'll dive deep into the Spring Boot framework and its powerful integration with AWS services.  
-</div>
- {/* Track Fee */}
+  
+Kickstart your journey into enterprise-level development with a hands-on project, progressing from core Java concepts to advanced AWS integrations. This course is ideal for developers looking to transition from Java to mastering Spring Boot and AWS.
+ </div>
  <div className="trackinfo-subheader">
-                Track Fee: <span style={{ color: '#27ae60' }}>INR. 9500</span>
-            </div>
-{/* Button Wrapper */}
+   
+  We offer the course in three levels, with each level building on the previous to provide a seamless learning experience
+ </div>
+  
+{/* Button Wrapper 
 <div className="trackinfo-button-wrapper">
     <button className="trackinfo-enroll-button" onClick={() => navigate('/checkout')}>
         Enroll Now
@@ -115,7 +117,7 @@ In this course, you'll dive deep into the Spring Boot framework and its powerful
         Reviews
     </button>
 </div>
-
+*/}
 
             {/* Course Sections */}
             {sections.map((section, index) => (

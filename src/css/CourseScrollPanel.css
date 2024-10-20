@@ -65,9 +65,15 @@
     font-size: 1rem;
     margin-top: 0.5rem;
     text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana, Geneva, Tahoma, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }   
 
+.course-levels{
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
 .scroll-button {
     background-color: #fff;
     border: 2px solid #ddd;

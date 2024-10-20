@@ -8,6 +8,7 @@ import PajDashboard from '../components/pajdashboard';
  import { useEffect, useState } from 'react';
 import LoginModal from '../components/loginModal';
 import { useSelector } from 'react-redux';
+import CourseOfferings from '../components/CourseOfferings';
  
 
 function Dashboard(){
@@ -30,7 +31,7 @@ function Dashboard(){
                     </div>
                      : ''
                 }
-             <div><LearningTrack /></div>  
+             <div><LearningTrack /></div> 
              <div><Motto /></div>  
              <div><PajDashboard /></div>  
              <div><LearnByDoingIt /></div>  
