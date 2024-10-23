@@ -229,7 +229,7 @@
     display: flex;
     flex-direction: row; /* Display buttons in a row for larger screens */
     gap: 10px; /* Add space between buttons */
-    margin-bottom: 20px; /* Add space between button groups */
+     
     justify-content: center; /* Center the buttons horizontally */
   }
   

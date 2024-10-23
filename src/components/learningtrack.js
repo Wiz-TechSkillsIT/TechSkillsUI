@@ -6,7 +6,6 @@ const LearningTrack = () => {
     const navigate = useNavigate();
     
     const courses = [
-        
         {
             title: 'Java to Spring Boot & AWS',
             image: './images/java_full_stack.png',
@@ -18,7 +17,7 @@ const LearningTrack = () => {
             title: 'Node.js API Developer',
             image: './images/nodejs.png',
             description: 'Learn Node.js and build REST APIs, full-stack apps, and secure microservices.',
-            link: '/mern-stack',
+            link: '/track-info-nodejs',
             levels: 'Levels 1 (Free), 2, 3'
         },
         {
