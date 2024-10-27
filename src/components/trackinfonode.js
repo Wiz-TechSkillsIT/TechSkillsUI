@@ -52,13 +52,13 @@ const TrackInfoNode = () => {
     {
       title: 'Level 2: Professional Node.js API Development',
       description: 'Focus: Working wih Files and Images, DB Relationships, JWT, Access Control.',
-      image: './images/level2_java.png',
+      image: './images/node_level2.png',
       project: 'Project Continuation: Employee Management System with a RESTful API'
     },
     {
       title: 'Level 3: Advanced Node.js Developments with Microservices',
       description: 'Focus: API Performance, Microservices, Adv Security, Cloud Integration.',
-      image: './images/level3_java.png',
+      image: './images/node_level3.png',
       project: 'Project Evolution: Scale EMS Project to a microservice architecture.'
 
     } 
@@ -141,7 +141,7 @@ const TrackInfoNode = () => {
       {sections.map((section, index) => (
         <div className="trackinfo-section" key={index}>
           <div className="trackinfo-image">
-            <img src={section.image} alt={section.title} style={{height: '70%',weight: '70%' }}/>
+            <img src={section.image} alt={section.title} />
           </div>
           <div className="trackinfo-content">
             <div className="trackinfo-title">{section.title}</div>
@@ -194,6 +194,11 @@ const TrackInfoNode = () => {
                     </li>
                     <li>
                       <span>➤</span> Efficient Data Management: Implement pagination, sorting, searching, and filtering for optimized API responses.
+
+                    </li>
+                    <li>
+                      <span>➤</span> DB Relationships: Work with Schemas connected to each other via 1:1, 1:M, M;1, M:M Relationships
+
 
                     </li>
                     <li>

@@ -21,6 +21,7 @@ import MernStack from './components/mernstack';
 import SpringBootDetails from './pages/SpringBootDetails';
 import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import TrackInfoNode from './components/trackinfonode';
+import TrackInfoReact from './components/trackinforeact';
 
 function App() {
   const location = useLocation();
@@ -36,6 +37,7 @@ function App() {
         <Route path='/' element={<Dashboard />} />
         <Route path='/track-info-java-sql' element={<TrackInfoJavaSql />} />
         <Route path='/track-info-nodejs' element={<TrackInfoNode />} />
+        <Route path='/track-info-react' element={<TrackInfoReact />} />
         
         <Route path='/spring-boot-with-aws' element={<SpringBootWithAWS />} />
         <Route path='/mern-stack' element={<MernStack />} />

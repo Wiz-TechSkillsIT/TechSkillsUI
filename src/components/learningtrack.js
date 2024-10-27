@@ -24,8 +24,8 @@ const LearningTrack = () => {
             title: 'React Development',
             image: './images/react.png',
             description: 'Become a job-ready React developer by mastering the latest React and Redux with projects.',
-            link: '/mean-stack',
-            levels: 'Levels 1 (Free), 2, 3'
+            link: '/track-info-react',
+            levels: 'Levels 1 (Free), 2'
         },
         {
             title: 'Angular Development',

@@ -30,7 +30,9 @@ function CourseInfo(prop){
     );
 
     useEffect(()=>{
-        setSubCourses(subcourses.filter(sc=>sc.trackId === prop.id))
+        setSubCourses(
+                subcourses.filter
+                    (sc=>sc.trackId === prop.id))
         
     },[prop]); 
 

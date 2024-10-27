@@ -7,7 +7,7 @@ const EnquireModal = ({ isOpen, onClose, subject }) => {
   const [emailSent, setEmailSent] = useState(false);
   const { executeRecaptcha } = useGoogleReCaptcha(); // Hook to use reCAPTCHA v3
   const [captchaVerified, setCaptchaVerified] = useState(false); // Captcha state
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
