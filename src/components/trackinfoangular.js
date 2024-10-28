@@ -14,7 +14,7 @@ const settings = {
   autoplay: true,
   autoplaySpeed: 3000, // 3-second interval
 };
-const TrackInfoReact = () => {
+const TrackInfoAngular = () => {
   const reviewsRef = useRef(null);
   const outcomeRef = useRef(null); // Ref for the outcome section
 
@@ -25,7 +25,7 @@ const TrackInfoReact = () => {
   const phoneNumber = '918806471579'; // Replace with your phone number
   const message = 'Welcome to TechSkillsIT! How can we assist you today?'; // Pre-typed message
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const subject = 'React.js Mastery'; // Subject passed as prop
+  const subject = 'Angular Mastery'; // Subject passed as prop
 
   const [isFeeModalOpen, setIsFeeModalOpen] = useState(false);
 
@@ -43,14 +43,14 @@ const TrackInfoReact = () => {
 
   const sections = [
     {
-      title: 'Level 1: React Essentials: Building the Foundation',
-      description: 'Focus: React basics, Components and State Management, Event Handling, Working with Forms, and Basic Data Manipulation.',
+      title: 'Level 1: Foundation of Angular Development',
+      description: 'Focus: Introducing core concepts of Angular and developing foundational skills for web development using this framework.',
       image: './images/level1_react.png',
-      project: 'Project: Employee Management System'
+      project: 'Project: Inventory Management System'
     },
     {
-      title: 'Level 2: Advanced React Development: Real-World Applications',
-      description: 'Focus: API integration, Advanced State Management with Redux, Component Libraries with PrimeReact, Data Visualization with Chart.js, Testing, and Deployment.',
+      title: 'Level 2: Advanced Angular Techniques and Application Building',
+      description: 'Focus: Building more complex, dynamic applications with advanced features and integrations in Angular.',
       image: './images/level2_react.png',
       project: 'Project Continuation: Employee Management System'
     },
@@ -106,13 +106,15 @@ const TrackInfoReact = () => {
     <div className="trackinfo-page">
       {/* Header */}
       <div className="trackinfo-header ">
-      React.js Mastery: Practical Skills from Basics to Professional Development
-      </div>
+      Angular Mastery: From Basics to Advanced Development
+            </div>
 
       {/* Subheader */}
       <div className="trackinfo-subheader">
-      Master React.js from the ground up in this all-encompassing course. Begin by learning core concepts like components, state, and events, and progress to building dynamic applications with API integration, form handling, and Redux state management. Finally, explore advanced techniques, including performance optimization, testing with Jest, and continuous deployment. This course provides the expertise needed to develop responsive, efficient, and production-ready applications.      {/* Track Fee */}
-      
+      Master Angular by building powerful, dynamic web applications,
+       focusing on core concepts, hands-on coding, and practical implementation. 
+       Starting with fundamentals and advancing to complex topics, 
+       this program provides a thorough, structured approach to mastering Angular.      
       <div className="trackinfo-subheader">
         <br />
         We offer the course in<span className="highlight">  two levels</span>, with each level building on the previous to provide a seamless learning experience:
@@ -143,31 +145,34 @@ const TrackInfoReact = () => {
             <div className="trackinfo-description">{section.project}</div>
 
             <ul>
-              {section.title === 'Level 1: React Essentials: Building the Foundation' && (
+              {section.title === 'Level 1: Foundation of Angular Development' && (
                 <div className="key-highlights" style={{ marginTop: '20px' }}>
                   <h3>Key Highlights:</h3>
                   <ul>
   <li>
-    <span>➤</span> Set up your development environment and create your first React project.
+    <span>➤</span> System Setup: Environment setup, installation of Angular CLI, and initializing Angular projects.
   </li>
   <li>
-    <span>➤</span> Understand the basics of components and how to render information in the app.
+    <span>➤</span> Component Architecture: Introduction to components, modules, and services.
   </li>
   <li>
-    <span>➤</span> Work with variables, state, and learn the power of dynamic data in React.
+    <span>➤</span> Data Binding: Understanding one-way, two-way data binding, and event binding.
   </li>
   <li>
-    <span>➤</span> Build interactive UIs using events like onClick and onChange.
+    <span>➤</span> Templates and Directives: Using built-in directives (*ngIf, *ngFor) and custom templates.
   </li>
   <li>
-    <span>➤</span> Manage user inputs through forms and filter displayed data.
+    <span>➤</span> Routing Basics: Setting up routing for single-page applications.
+  </li>
+  <li>
+    <span>➤</span> Forms: Handling user input through reactive and template-driven forms.
   </li>
 </ul>
 
                   <div >
                 <span>
                        <h3> Level Outcome: </h3>  
-                       <span className="  outcome">By completing Level 1, you will gain a Gain a solid foundation in React by building interactive applications with components, state, and events. Develop the skills to create and manage forms, handle user input, and display dynamic data.</span>
+                       <span className="  outcome">By completing Level 1, you will be able to create and structure basic Angular applications, implement data-binding, and manage user interactions. you’ll be equipped to build a small-scale project to reinforce these concepts.</span>
                     </span>
                     <span>
                     <br /><br />
@@ -180,30 +185,30 @@ const TrackInfoReact = () => {
                 
               )}
               
-              {section.title === 'Level 2: Advanced React Development: Real-World Applications' && (
+              {section.title === 'Level 2: Advanced Angular Techniques and Application Building' && (
                 <div className="key-highlights" style={{ marginTop: '20px' }}>
                   <h3>Key Highlights:</h3>
                   <ul>
   <li>
-    <span>➤</span> Integrate styling into your project using Bootstrap/PrimeReact for a polished UI.
+    <span>➤</span> State Management: Introduction to RxJS for managing state and observables, and handling asynchronous data.
   </li>
   <li>
-    <span>➤</span> Fetch and display data by calling APIs with both Fetch and Axios.
+    <span>➤</span> Services and Dependency Injection: Creating and injecting services across components.
   </li>
   <li>
-    <span>➤</span> Utilize React lifecycle hooks to manage component behavior effectively.
+    <span>➤</span> Advanced Routing: Lazy loading, route guards, and nested routing for optimized navigation.
   </li>
   <li>
-    <span>➤</span> Pass data between components with props and lift state for component communication.
+    <span>➤</span> HTTP Client Integration: Fetching data from APIs and handling CRUD operations.
   </li>
   <li>
-    <span>➤</span> Master Redux for efficient state management and handle CRUD operations.
+    <span>➤</span> Component Libraries and Styling: Using libraries like Angular Material for UI components and SCSS for styling.
   </li>
   <li>
-    <span>➤</span> Optimize performance with code splitting and lazy loading.
+    <span>➤</span> PrimeNg: Use External Design Component Library like Primeng to create professional Components
   </li>
   <li>
-    <span>➤</span> Test React components using Jest and ensure quality with CI/CD deployment.
+    <span>➤</span> Testing in Angular: Setting up and running unit tests with Jasmine and Karma.
   </li>
 </ul>
 
@@ -211,7 +216,9 @@ const TrackInfoReact = () => {
                 <span>
                        <h3> Level Outcome: </h3>  
                        <span className="  outcome">
-                       After Level 2, you would gain Advance to professional-level React development skills with hands-on experience in API integration, state management using Redux, and performance optimization. Be equipped to build complex applications with modern testing and deployment practices.
+                       After Level 2, You will be able to build and maintain complex applications, implement efficient state management, interact with RESTful APIs, and utilize Angular testing tools. You will complete a project with full CRUD functionality, demonstrating a professional-grade application.
+
+
 
                        </span>
                     </span>
@@ -247,25 +254,26 @@ const TrackInfoReact = () => {
            
           <div className="trackinfo-content">
             <div className="trackinfo-title">Course Outcome</div>
-            <div className="trackinfo-description">By completing all levels of the ReactJs Mastery course, you will gain:</div>
+            <div className="trackinfo-description">By completing all levels of the AngularJs course, you will gain:</div>
  
             <ul>
                 <div className="key-highlights" style={{ marginTop: '20px' }}>
                    
                 <ul>
   <li>
-    <span>➤</span> Comprehensive React Skills: Master React development from fundamentals to advanced topics, preparing you for complex, scalable applications.
+    <span>➤</span> Comprehensive Angular Skills: Master Angular development from basics to advanced techniques, enabling you to create scalable and dynamic web applications.
   </li>
   <li>
-    <span>➤</span> Practical Project Experience: Build real-world applications with features like form handling, data filtering, and robust state management using Redux.
+    <span>➤</span> Practical Project Experience: Build real-world applications with features like component-based architecture, data-binding, and reactive forms.
   </li>
   <li>
-    <span>➤</span> Expertise in Modern Tools and Techniques: Learn performance optimization with code splitting, testing with Jest, and seamless deployment through CI/CD practices.
+    <span>➤</span> Expertise in Modern Tools and Techniques: Gain skills in RxJS for state management, Angular Material for UI, and unit testing with Jasmine and Karma.
   </li>
   <li>
-    <span>➤</span> Career Readiness: Equip yourself for roles such as React Developer, Frontend Engineer, or Full-Stack Developer.
+    <span>➤</span> Career Readiness: Prepare for roles such as Angular Developer, Frontend Engineer, or Full-Stack Developer with solid Angular expertise.
   </li>
 </ul>
+
 
 </div>
 </ul>
@@ -291,4 +299,4 @@ const TrackInfoReact = () => {
   );
 };
 
-export default TrackInfoReact;
+export default TrackInfoAngular;

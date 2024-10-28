@@ -31,8 +31,8 @@ const LearningTrack = () => {
             title: 'Angular Development',
             image: './images/angular.png',
             description: 'Learn Angular 18 from fundamentals to advanced concepts and real-world projects.',
-            link: '/full-stack-java',
-            levels: 'Levels 1 (Free), 2, 3'
+            link: 'track-info-angular',
+            levels: 'Levels 1 (Free), 2'
         },
         {
             title: 'Database Programming',
