@@ -1,0 +1,26 @@
+/* Sidebar styling */
+.sidebar {
+    height: 100vh;
+    overflow-y: auto; /* Allows scrolling only when necessary */
+    padding-bottom: 1rem;
+}
+
+/* Container layout for video and sidebar */
+.container_video {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* Center the video and title */
+.video-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Limit the width of the video card */
+.video-container {
+    width: 100%;
+    max-width: 640px;
+}

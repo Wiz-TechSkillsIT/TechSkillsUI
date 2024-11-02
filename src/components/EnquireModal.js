@@ -1,35 +1,47 @@
 import React, { useState } from 'react';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import axios from 'axios';
 
 const EnquireModal = ({ isOpen, onClose, subject }) => {
   const [query, setQuery] = useState('');
   const [email, setEmail] = useState('');
   const [emailSent, setEmailSent] = useState(false);
-  const { executeRecaptcha } = useGoogleReCaptcha(); // Hook to use reCAPTCHA v3
-  const [captchaVerified, setCaptchaVerified] = useState(false); // Captcha state
- 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if reCAPTCHA is ready
     if (!executeRecaptcha) {
       alert('reCAPTCHA is not ready');
       return;
     }
 
     try {
-      // Execute reCAPTCHA
       const token = await executeRecaptcha('submit_form');
       console.log('reCAPTCHA token:', token);
 
       if (token) {
-        setCaptchaVerified(true); // Captcha verified
-        // Logic to send the email (e.g., using an API or email service)
-        console.log('Email:', email);
-        console.log('Subject:', subject);
-        console.log('Query:', query);
+        setCaptchaVerified(true);
 
-        setEmailSent(true);
+        // Call the email-sending API
+        try {
+          const response = await axios.post('http://localhost:5000/api/email/send-course-enquiry-email', {
+            fromAddress: email,              // sender's email
+            fromName: "TechSkillsIT User",    // generic name for user
+            toAddress: "imtiyaz@techskillsit.com", // receiving address
+            toName: "TechSkillsIT Support",   // name for receiver
+            subject: subject,
+            htmlContent: `<div><p>${query}</p></div>`, // user query in email body
+          });
+
+          if (response.status === 200) {
+            setEmailSent(true); // Show success message
+          }
+        } catch (error) {
+          console.error('Failed to send email:', error);
+          alert('Failed to send email. Please try again.');
+        }
       }
     } catch (error) {
       console.error('reCAPTCHA verification failed:', error);
@@ -94,46 +106,45 @@ const EnquireModal = ({ isOpen, onClose, subject }) => {
   );
 };
 
- 
-
 // Basic styles  
 const overlayStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-  };
-  
-  const modalStyle = {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    width: '400px',
-    boxShadow: '0 5px 15px rgba(0,0,0,0.3)',
-  };
-  
-  const submitButtonStyle = {
-    padding: '10px 20px',
-    backgroundColor: '#28A745',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    marginRight: '10px',
-  };
-  
-  const cancelButtonStyle = {
-    padding: '10px 20px',
-    backgroundColor: '#DC3545',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  };
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: 'rgba(0, 0, 0, 0.7)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  zIndex: 1000,
+};
+
+const modalStyle = {
+  backgroundColor: '#fff',
+  padding: '20px',
+  borderRadius: '8px',
+  width: '400px',
+  boxShadow: '0 5px 15px rgba(0,0,0,0.3)',
+};
+
+const submitButtonStyle = {
+  padding: '10px 20px',
+  backgroundColor: '#28A745',
+  color: 'white',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  marginRight: '10px',
+};
+
+const cancelButtonStyle = {
+  padding: '10px 20px',
+  backgroundColor: '#DC3545',
+  color: 'white',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+};
+
 export default EnquireModal;

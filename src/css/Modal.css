@@ -1,0 +1,47 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    width: 300px; /* Small size for login buttons */
+    background: white;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+  }
+  
+  .modal-header {
+    background-color: #f8f9fa; /* Light gray */
+    padding: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: -20px; /* Position above the modal content */
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+  }
+  

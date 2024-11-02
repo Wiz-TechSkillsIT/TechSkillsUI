@@ -1,6 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+ 
  
 const FeeModal = ({ isOpen, onClose }) => {
+  
+  const navigate = useNavigate();
   if (!isOpen) return null;
 
   // Close modal if user clicks outside the modal content
@@ -9,7 +13,9 @@ const FeeModal = ({ isOpen, onClose }) => {
       onClose(); // Call the close function if clicking outside
     }
   };
-
+  const enroll =(id,level)=>{
+    navigate('/checkout/' + id+ '/' + level);
+  }
   return (
     <div style={overlayStyle} onClick={handleOverlayClick}>
       <div style={modalStyle}>
@@ -29,7 +35,7 @@ const FeeModal = ({ isOpen, onClose }) => {
             Please reach out for details regarding the start date and schedule via email, WhatsApp (click on buttons on the site), or through our global chat feature.
             
           </p>
-          <button style={enrollButtonStyle}>Enroll in Level 2</button>
+          <button style={enrollButtonStyle} onClick={()=>enroll('671e91552449134eeecffcf3','level2')}>Enroll in Level 2</button>
         </div>
 
         <div style={feeCardStyle}>
@@ -41,7 +47,7 @@ const FeeModal = ({ isOpen, onClose }) => {
             For more details on the start date and schedule, please contact us via email, WhatsApp, or the global chat feature on our site.
             
           </p>
-          <button style={enrollButtonStyle}>Enroll in Level 3</button>
+          <button style={enrollButtonStyle} onClick={()=>enroll('671e91552449134eeecffcf3','level3')}>Enroll in Level 3</button>
         </div>
 
         <button onClick={onClose} style={closeButtonStyle}>Close</button>
@@ -49,6 +55,7 @@ const FeeModal = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
 
 // Styles
 const overlayStyle = {

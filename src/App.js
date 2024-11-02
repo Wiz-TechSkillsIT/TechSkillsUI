@@ -51,10 +51,10 @@ function App() {
                         <PrivateRoute key={location.key}>
                             <CourseVideos />
                         </PrivateRoute>
-                    } 
+                    }  
                 />
         <Route path='/auth' element={<Auth />} />
-        <Route path='/checkout' element={<CourseCheckout />} />
+        <Route path='/checkout/:id/:level' element={<CourseCheckout />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/terms-and-conditions' element={<TermsAndConditions />} />
       </Routes>

@@ -140,7 +140,7 @@ export default function Navbar() {
 
     const start = (
         <Link to="/">
-            <img src="./images/logo_slant.png" style={{ width: '60%' }} alt="Logo" />
+            <img src="./images/logo_main.png" style={{ width: '60%' }} alt="Logo" />
         </Link>
     );
 
