@@ -21,23 +21,13 @@ Andheri East , Mumbai - 400059<br />
                     <li className="nav__item">
                         <h2 className="nav__title">Learning Tracks</h2>
                         <ul className="nav__ul">
-                            <li><a href="#">Java with MySQL</a></li>
-                            <li><a href="#">Professional Spring Boot Dev</a></li>
-                            <li><a href="#">Mearn Stack</a></li>
-                            <li><a href="#">Mean Stack</a></li>
+                            <li><Link to="/track-info-java-sql">Java FSD: Java to Spring Boot & AWS</Link></li>
+                            <li><Link to="/track-info-nodejs">Node.js Programming with Microservices</Link></li>
+                            <li><Link to="/track-info-react">React.js Mastery</Link></li>
+                            <li><Link to="/track-info-angular">Professional Angular Development</Link></li>
                         </ul>
                     </li>
-                    <li className="nav__item nav__item--extra">
-                        <h2 className="nav__title">Courses</h2>
-                        <ul className="nav__ul nav__ul--extra">
-                            <li><a href="#">Java OOPs</a></li>
-                            <li><a href="#">C Programming</a></li>
-                            <li><a href="#">SQL programming</a></li>
-                            <li><a href="#">React.Js</a></li>
-                            <li><a href="#">Professional Spring Boot</a></li>
-                             
-                        </ul>
-                    </li>
+                    
                     <li className="nav__item">
                         <h2 className="nav__title">Legal</h2>
                         <ul className="nav__ul">

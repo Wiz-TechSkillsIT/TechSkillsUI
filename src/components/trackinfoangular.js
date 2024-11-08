@@ -15,6 +15,7 @@ const settings = {
   autoplaySpeed: 3000, // 3-second interval
 };
 const TrackInfoAngular = () => {
+  window.scroll(0,0);
   const reviewsRef = useRef(null);
   const outcomeRef = useRef(null); // Ref for the outcome section
 
@@ -122,7 +123,7 @@ const TrackInfoAngular = () => {
       {/* Button Wrapper */}
       <div className="trackinfo-button-wrapper">
       <div class="button-group">
-        <button className="trackinfo-enroll-button" onClick={() => navigate('/checkout')}>
+        <button className="trackinfo-enroll-button" onClick={() => navigate('/course-videos?id=64e13322b617710fd139a70e&courseId=64e12a1acafd13d5c2ad46fb')}>
           Start Level 1 for free 
         </button>
         <button className="trackinfo-outcome-button" onClick={scrollToOutcome}>

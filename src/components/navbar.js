@@ -71,22 +71,31 @@ export default function Navbar() {
             items: [
                 [
                     {
-                        label: 'Free Courses',
+                        label: 'Learning Tracks',
                         items: [
                             {
-                                label: 'Java Essentials',
+                                label: 'Java FSD: Java to Spring Boot & AWS ',
                                 command: () => {
-                                    navigate('/course-videos?courseId=64e12a1acafd13d5c2ad46fb&id=64e13322b617710fd139a70e');
+                                    navigate('/track-info-java-sql');
                                 },
                             },
-                            { label: 'Code with Python' },
-                            { label: 'Program with C' },
-                            { label: 'SQL Essentials' },
-                            { label: 'J2EE: JSPs and Servlets' },
+                            { label: 'Node.js Programming with Microservices' ,
+                            command: () => {
+                                navigate('/track-info-nodejs');
+                            }},
+                            { label: 'React.js Mastery',
+                            command: () => {
+                                navigate('/track-info-react');
+                            }} ,
+                            { label: 'Professional Angular Development'  ,
+                            command: () => {
+                                navigate('/track-info-angular');
+                            }},
+                           // { label: 'J2EE: JSPs and Servlets' },
                         ],
                     },
                 ],
-                [
+                /*   [
                     {
                         label: 'Premium Courses',
                         style: 'width:250px; !important',
@@ -110,9 +119,10 @@ export default function Navbar() {
                             { label: 'Mastering DB/SQL Programming' },
                         ],
                     },
-                ],
+                ],*/
             ],
         },
+        /*
         {
             label: 'Certifications',
             icon: 'pi pi-mobile',
@@ -128,14 +138,15 @@ export default function Navbar() {
                     },
                 ],
             ],
-        },
+        },*/
+         /*
         {
             label: 'Pay After Job Program',
             icon: 'pi pi-star',
             command: () => {
                 console.log('PAJ');
             },
-        },
+        },*/
     ];
 
     const start = (
