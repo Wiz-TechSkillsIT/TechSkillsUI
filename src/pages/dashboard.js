@@ -24,13 +24,13 @@ function Dashboard(){
 
     return (
          <div style={{backgroundColor: 'bisque'}}>
-                {
+                {/**  {
                    list.length === 1?
                     <div>
                           <LoginModal nameProp={name} emailProp={email} />
                     </div>
                      : ''
-                }
+                }*/}
              <div><LearningTrack /></div> 
              <div><Motto /></div>  
              <div><PajDashboard /></div>  
