@@ -141,8 +141,7 @@ const TermsAndConditions = () => {
                 </p>
                 <p><b>4.3 Refunds</b></p>
                 <p>
-                    We are happy to provide a refund of 100% (minus payment gateway charges) for a Course,
-                    within 24 hours of payment. Post 24 hours, no refunds will be made.
+                    No refunds will be made once the trainee joins the course. 
                 </p>
             </div>
             <div style={sectionStyle}>
