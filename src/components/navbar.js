@@ -167,7 +167,7 @@ export default function Navbar() {
                 <div>
                     <span   style={{ cursor: 'pointer' }}>
                     <button className="trackinfo-reviews-button">
-                        DASHBOARD
+                        Dashboard
                     </button>
                     {/* <button className="trackinfo-outcome-button" onClick={handleLogout}>
                         Log Out
