@@ -46,15 +46,15 @@ function App() {
         <Route path='/user-dashboard' element={<UserDashboard />} />
         <Route path='/course-details-java-spring-boot' element={<SpringBootDetails /> } />
         <Route 
-                    path="/course-videos" 
+                    path="/course-videos/:id" 
                     element={
-                        <PrivateRoute key={location.key}>
+                        //<PrivateRoute key={location.key}>
                             <CourseVideos />
-                        </PrivateRoute>
+                        //</PrivateRoute>
                     }  
                 />
         <Route path='/auth' element={<Auth />} />
-        <Route path='/checkout/:id/:level' element={<CourseCheckout />} />
+        <Route path='/checkout/:id/' element={<CourseCheckout />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/terms-and-conditions' element={<TermsAndConditions />} />
       </Routes>

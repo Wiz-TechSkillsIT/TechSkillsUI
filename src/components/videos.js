@@ -1,164 +1,178 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { PanelMenu } from 'primereact/panelmenu';
-import { Card } from 'primereact/card';
-import subCourses from '../data/subcourses';
-import modules from '../data/modules';
-import videos from '../data/videos';
-import '../css/sidebar.css'
-function VideosPage() {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const [courseData, setCourseData] = useState({});
-    const [moduleItems, setModuleItems] = useState([]);
-    const [selectedVideo, setSelectedVideo] = useState(null);
-    const [accessMessage, setAccessMessage] = useState('');
-    const [param] = useSearchParams();
-    const courseId = param.get('courseId');
-    const navigate = useNavigate();
+import React, { useEffect, useState } from "react";
+import "../css/VideoLayout.css";
+import { PanelMenu } from "primereact/panelmenu";
+import { Badge } from "primereact/badge";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import courses from "../data/course_info_main";
 
-    useEffect(() => {
-        checkUserAuthentication();
-        initializePageData();
-    }, []);
+const VideosPage = () => {
+  const { id } = useParams();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [course, setCourse] = useState(courses.find((c) => c.courseId == id));
+  const [videoSrc, setVideoSrc] = useState(""); // State to store the iframe src
+  const [expandedModules, setExpandedModules] = useState({}); // Track expanded state of modules
+  const [currentVideoTitle, setCurrentVideoTitle] = useState("Loading..."); // Track the current video title
 
-    const checkUserAuthentication = async () => {
-        const isLoggedIn = Boolean(localStorage.getItem('user')); // Replace 'authToken' with actual key if different
-
-        if (!isLoggedIn) {
-            navigate('/login');
-            return;
-        }
-
-        const enrolled = await fetchEnrollmentStatus();
-        if (!enrolled) {
-            await enrollUser();
-        }
-    };
-
-    const fetchEnrollmentStatus = async () => {
-        const response = await fetch(`/api/enrollment?courseId=${courseId}`);
-        const data = await response.json();
-        return data.enrolled;
-    };
-
-    const enrollUser = async () => {
-        await fetch('/api/enrollment', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ courseId })
-        });
-    };
-
-    const initializePageData = () => {
-        const course = subCourses.find(c => c._id === courseId);
-        const courseModules = modules.filter(m => m.courseId === courseId);
-        
-        const items = courseModules.map(module => {
-            const moduleVideos = videos
-                .filter(video => video.moduleId === module._id)
-                .map(video => createVideoItem(video, course.type === 'free'));
-
-            return {
-                label: module.name,
-                icon: 'pi pi-list',
-                items: moduleVideos
-            };
-        });
-
-        setCourseData(course);
-        setModuleItems(items);
-    };
-
-    const createVideoItem = (video, isFreeCourse) => ({
-        label: video.title,
-        icon: isFreeCourse ? 'pi pi-lock-open' : 'pi pi-lock',
-        command: () => handleVideoClick(video, isFreeCourse),
+  useEffect(() => {
+    // Initialize expandedModules state with the first module expanded
+    const initialState = {};
+    course?.modules.forEach((module, index) => {
+      initialState[module.title] = index === 0; // Expand only the first module
     });
+    setExpandedModules(initialState);
 
-    const handleVideoClick = (video, isFreeCourse) => {
-        if (isFreeCourse || courseData.type === 'free') {
-            setSelectedVideo(video);
-            setAccessMessage('');
-        } else {
-            setAccessMessage('Access Restricted: Please enroll to view this content.');
-        }
-        closeSidebar();
+    // Load default video on initial page load
+    fetchVideoData("40c985879d456a75b3c3e0987886037b", "Default Video Title");
+  }, [course]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".side-menu") && !event.target.closest(".hamburger")) {
+        closeMenu();
+      }
     };
 
-    const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-    const closeSidebar = () => setIsSidebarOpen(false);
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
-    return (
-        <div className="app">
-            <div className="top-nav">
-                <div className="hamburger" onClick={toggleSidebar}>☰</div>
-            </div>
-            <div className="container_video">
-                <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} items={moduleItems} />
-                <VideoPlayer video={selectedVideo} accessMessage={accessMessage} />
-            </div>
-        </div>
-    );
-}
+  const fetchVideoData = async (code, title) => {
+    if (!code) {
+      console.error("Invalid video code:", code);
+      alert("Failed to load the video. Video code is missing.");
+      return;
+    }
 
-function Sidebar({ isSidebarOpen, toggleSidebar, items }) {
-    return (
-        <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} id="sidebar">
-            <div className="sidebar-header">
-                <div className="hamburger sidebar-hamburger" onClick={toggleSidebar}>☰</div>
-                <div className="sidebar-title">Modules</div>
-            </div>
-            <div className="panel-menu-container">
+    try {
+      const response = await axios.post("http://localhost:5005/api/video/vdocipher/otp", {
+        code,
+      });
+
+      const { otp, playbackInfo } = response.data;
+      const newSrc = `https://player.vdocipher.com/v2/?otp=${otp}&playbackInfo=${playbackInfo}`;
+      setVideoSrc(newSrc); // Update iframe src
+      setCurrentVideoTitle(title); // Update the current video title
+      closeMenu(); // Close side menu after video click (mobile version)
+    } catch (error) {
+      console.error("Error fetching video data:", error.response?.data || error.message);
+      alert("Failed to load the video. Please try again later.");
+    }
+  };
+
+  const handleVideoClick = (video) => {
+    if (!video?.code) {
+      console.error("Invalid video object:", video);
+      alert("This video cannot be played due to missing details.");
+      return;
+    }
+
+    fetchVideoData(video.code, video.title);
+  };
+
+  const handleModuleToggle = (moduleTitle) => {
+    setExpandedModules((prevState) => ({
+      ...prevState,
+      [moduleTitle]: !prevState[moduleTitle], // Toggle the expanded state of the clicked module
+    }));
+  };
+
+  const items = course?.modules.map((module) => ({
+    label: module.title,
+    expanded: expandedModules[module.title], // Control the expanded state
+    template: (item, options) => (
+      <a
+        className="flex align-items-center px-3 py-2 cursor-pointer"
+        onClick={(e) => {
+          e.preventDefault(); // Prevent default expansion/collapse behavior
+          handleModuleToggle(module.title); // Manually toggle module
+        }}
+      >
+        <span className={`pi pi-folder-open text-primary`} />
+        <span className="mx-2">{module.title}</span>
+      </a>
+    ),
+    items: module.videos.map((video) => ({
+      label: video.title || "Untitled Video",
+      playTime: video.playTime || "00:00",
+      code: video.code || null,
+      template: (item, options) => (
+        <a
+          className="flex align-items-center px-3 py-2 cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent the menu from collapsing
+            handleVideoClick(video);
+          }}
+        >
+          <span className={`pi pi-video text-primary`} />
+          <span className={`mx-2 ${item.items ? "font-semibold" : ""}`}>
+            {video.title}
+          </span>
+          {video.playTime && <Badge className="ml-auto" value={video.playTime} />}
+        </a>
+      ),
+    })),
+  }));
+
+  return (
+    <div className="container">
+      <div className="hamburger" onClick={toggleMenu}>
+        ☰
+      </div>
+
+      <div className={`side-menu ${isMenuOpen ? "open" : ""}`}>
+        <div className="card flex justify-content-center">
+          <div className="card">
+            <h2 className="course-title">{course?.trackName}</h2> {/* Display Course Title */}
+            <div className="card-content">
+              <div style={{ paddingTop: "10%", position: "relative" }}>
                 <PanelMenu model={items} className="w-full md:w-25rem" />
+              </div>
             </div>
+          </div>
         </div>
-    );
-}
+      </div>
 
-function VideoPlayer({ video, accessMessage }) {
-    const iframeSrc = video ? `https://player.vdocipher.com/v2/?otp=${video.otp}&playbackInfo=${video.playbackInfo}` : '';
-
-    const videoContainerStyle = {
-        width: '100%',
-        maxWidth: '640px', // Adjusted width
-        margin: 'auto',
-    };
-
-    const iframeStyle = {
-        width: '100%',
-        height: '360px', // Adjusted height
-        border: 0
-    };
-
-    return (
-        <div className="content">
-            <div className="video-section" id="video-section">
-                {accessMessage ? (
-                    <Card title="Access Restricted">
-                        <p>{accessMessage}</p>
-                    </Card>
-                ) : (
-                    <>
-                        
-                        <div style={videoContainerStyle} title={video?.title || "Please select a video"}>
-                            
-                            <div style={videoContainerStyle}>
-                                {video ? (
-                                    <iframe
-                                        src={iframeSrc}
-                                        style={iframeStyle}
-                                        allowFullScreen
-                                    />
-                                ) : (
-                                    <p>Please select a video from the sidebar.</p>
-                                )}
-                            </div>
-                        </div>
-                    </>
-                )}
+      <div className="video-player">
+        <div className="card">
+          <h3 className="video-title">{currentVideoTitle}</h3> {/* Display Current Video Title */}
+          <div className="card-content">
+            <div style={{ paddingTop: "56%", position: "relative" }}>
+              {videoSrc ? (
+                <iframe
+                  src={videoSrc}
+                  style={{
+                    border: 0,
+                    maxWidth: "100%",
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    height: "100%",
+                    width: "100%",
+                  }}
+                  allowFullScreen
+                  allow="encrypted-media"
+                  title="Video Player"
+                ></iframe>
+              ) : (
+                <p style={{ textAlign: "center" }}>Select a video to play.</p>
+              )}
             </div>
+          </div>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default VideosPage;

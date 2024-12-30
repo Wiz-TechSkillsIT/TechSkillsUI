@@ -35,7 +35,7 @@ export default function Navbar() {
         dispatch(logoutUser());
 
         // Redirect to login page
-        navigate("/auth");
+        navigate("/");
 
         // Reset avatar and close the dropdown
         setAvatar(null);
@@ -159,48 +159,21 @@ export default function Navbar() {
         <div className="flex align-items-center gap-2" style={{ position: 'relative' }}>
             {avatar === null ? (
                 <Link to="/auth">
-                    <i className="pi pi-user ml-4" style={{ fontSize: '1.5rem' }}></i>
+                     <button className="trackinfo-reviews-button">
+                        LOGIN
+                    </button>
                 </Link>
             ) : (
                 <div>
-                    <span onClick={toggleDropdown} style={{ cursor: 'pointer' }}>
-                        <img
-                            key={avatar}
-                            src={avatar}
-                            alt="Avatar"
-                            style={{ width: '50px', height: '50px', borderRadius: '50%' }}
-                        />
+                    <span   style={{ cursor: 'pointer' }}>
+                    <button className="trackinfo-reviews-button">
+                        DASHBOARD
+                    </button>
+                    {/* <button className="trackinfo-outcome-button" onClick={handleLogout}>
+                        Log Out
+                    </button> */}
                     </span>
-                    {/* Dropdown */}
-                    {dropdownVisible && (
-                        <div
-                            ref={dropdownRef} // Attach ref to the dropdown
-                            className="dropdown"
-                            style={{
-                                position: 'absolute',
-                                top: '60px',
-                                right: '0',
-                                backgroundColor: '#fff',
-                                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                                padding: '10px',
-                                borderRadius: '4px',
-                                zIndex: 10,
-                            }}
-                        >
-                            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                                <li
-                                    onClick={handleLogout}
-                                    style={{
-                                        cursor: 'pointer',
-                                        padding: '8px 16px',
-                                        borderBottom: '1px solid #ccc',
-                                    }}
-                                >
-                                    Logout
-                                </li>
-                            </ul>
-                        </div>
-                    )}
+                    
                 </div>
             )}
         </div>

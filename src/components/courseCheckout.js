@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import courseData from '../data/course_data';
+import courses from '../data/course_info_main';
 import Modal from '../components/Modal';
 import SimpleLogin from '../components/SimpleLogin';
 import '../css/CourseCheckout.css';
 
 const CourseCheckout = () => {
-  const { id, level } = useParams();
+  const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation(); // Capture the current location
 
-  const course = courseData.find(c => c._id === id);
-  const levelNumber = parseInt(level.replace("level", ""), 10);
-  const levelData = course?.levels.find(l => l.level === levelNumber);
-
-  const [isModalOpen, setModalOpen] = useState(false);
+  const course = courses.find(c => c.courseId == id);
+  const fee = course?.fee;
+   const [isModalOpen, setModalOpen] = useState(false);
 
   // Scroll to the top of the page when this component is loaded
   useEffect(() => {
@@ -26,7 +24,7 @@ const CourseCheckout = () => {
 
     if (user) {
       // Redirect directly to payment if the user is logged in
-      navigate(`/payment?courseId=${id}&level=${levelNumber}&fee=${levelData.price}`);
+      navigate(`/payment?courseId=${id}&fee=${fee}`);
     } else {
       // Open login modal with the current location in state
       setModalOpen(true);
@@ -44,8 +42,11 @@ const CourseCheckout = () => {
         <div className="course-details">
           <div className="course-info">
             <p className="course-title">
-              {course?.title} <br />
-              {levelData?.title}
+              Course Name: {course?.title} <br />
+              Level: {course?.level}
+            </p>
+            <p>
+              Track: {course?.trackName}
             </p>
             <p className="fee-inclusive">Fee Inclusive of all Taxes</p>
             <p className="course-access">
@@ -57,11 +58,11 @@ const CourseCheckout = () => {
           </div>
           <div className="course-amount">
             <strong>Amount in INR</strong>
-            <p>{levelData ? `Rs.${levelData.price}` : "Fee not available"}</p>
+            <p>{course ? `Rs.${fee}` : "Fee not available"}</p>
           </div>
         </div>
         <div className="total-fee">
-          <strong>Total Fee: Rs.{levelData?.price}</strong>
+          <strong>Total Fee: Rs.{fee}</strong>
         </div>
         
         <button onClick={proceedToPayment} className="proceed-button">PROCEED TO PAYMENT</button>

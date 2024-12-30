@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Videos from "../components/videos";
 import PageHeading from "../components/pageheading";
 import '../css/videos.css';
@@ -7,18 +7,18 @@ import VideoPageHeading from "../components/videopageheading";
 
 function CourseVideos(){
 
-    const [param] = useSearchParams(); 
-    const [id,setId] = useState('');
-
+    const { id } = useParams();
+    
     useEffect(()=>{
-        setId(param.get('courseId')); 
-    },[param]); 
+         
+         
+    },[ ]); 
  
 
     return (
        <div>
-          <VideoPageHeading  />
-          <Videos />
+          {/* <VideoPageHeading  /> */}
+          <Videos id={id}/>
        </div>
     )
 }
