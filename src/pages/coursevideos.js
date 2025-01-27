@@ -5,6 +5,7 @@ import PageHeading from "../components/pageheading";
 import '../css/videos.css';
 import VideoPageHeading from "../components/videopageheading";
 
+
 function CourseVideos(){
 
     const { id } = useParams();
@@ -12,7 +13,7 @@ function CourseVideos(){
     useEffect(()=>{
          
          
-    },[ ]); 
+    },[]); 
  
 
     return (

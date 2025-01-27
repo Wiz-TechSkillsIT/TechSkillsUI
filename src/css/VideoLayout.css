@@ -7,13 +7,13 @@
   }
   .course-track{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: medium;
+    font-size: large;
      text-align: left;
      color: black;
   }
   .course-title{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: larger;
     text-align: left;
   }
   .video-title{

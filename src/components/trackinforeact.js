@@ -121,8 +121,8 @@ const TrackInfoReact = () => {
       {/* Button Wrapper */}
       <div className="trackinfo-button-wrapper">
       <div class="button-group">
-        <button className="trackinfo-enroll-button" onClick={() => navigate('/course-videos?id=64e13322b617710fd139a70e&courseId=64e12a1acafd13d5c2ad46fb')}>
-          Start Level 1 for free 
+      <button className="trackinfo-enroll-button" onClick={() => navigate('/checkout/102')}>
+          Start Level 1
         </button>
         <button className="trackinfo-outcome-button" onClick={scrollToOutcome}>
           Outcome

@@ -133,7 +133,10 @@ const VideosPage = () => {
       <div className={`side-menu ${isMenuOpen ? "open" : ""}`}>
         <div className="card flex justify-content-center">
           <div className="card">
-            <h2 className="course-title">{course?.trackName}</h2> {/* Display Course Title */}
+            <h2 className="course-track">{course?.trackName}</h2> {/* Display Course Title */}
+            
+            <h4 className="course-title">Level:{course?.level} = {course?.title}</h4> {/* Display Course Title */}
+
             <div className="card-content">
               <div style={{ paddingTop: "10%", position: "relative" }}>
                 <PanelMenu model={items} className="w-full md:w-25rem" />

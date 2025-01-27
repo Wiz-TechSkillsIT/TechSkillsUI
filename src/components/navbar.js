@@ -15,9 +15,8 @@ export default function Navbar() {
     const dropdownRef = useRef(null); // Create a ref for the dropdown
 
     useEffect(() => {
-        if (list.length === 1) {
-            console.log(list[0].picture)
-            setAvatar(list[0].picture);
+        if (list.length >= 1) {
+            
         }
     }, [list.length]);
 
@@ -26,6 +25,10 @@ export default function Navbar() {
         setDropdownVisible(!dropdownVisible);
     };
 
+    const handleDashboard = ()=>{
+        // Redirect to login page
+        navigate("/user-dashboard");
+    }
     // Handle logout action and close the dropdown
     const handleLogout = () => {
         // Clear the authentication token
@@ -157,7 +160,7 @@ export default function Navbar() {
 
     const end = (
         <div className="flex align-items-center gap-2" style={{ position: 'relative' }}>
-            {avatar === null ? (
+            {list.length ===0 ? (
                 <Link to="/auth">
                      <button className="trackinfo-reviews-button">
                         LOGIN
@@ -166,7 +169,7 @@ export default function Navbar() {
             ) : (
                 <div>
                     <span   style={{ cursor: 'pointer' }}>
-                    <button className="trackinfo-reviews-button">
+                    <button className="trackinfo-reviews-button" onClick={handleDashboard}>
                         Dashboard
                     </button>
                     {/* <button className="trackinfo-outcome-button" onClick={handleLogout}>
@@ -180,7 +183,7 @@ export default function Navbar() {
     );
 
     return (
-        <div className="card" style={{ backgroundColor: 'bisque' }}>
+        <div className="card" style={{ backgroundColor: 'bisque', margin: 0, padding : 0 }}>
             <MegaMenu model={items} breakpoint="960px" start={start} end={end} className="custom-megamenu" />
         </div>
     );

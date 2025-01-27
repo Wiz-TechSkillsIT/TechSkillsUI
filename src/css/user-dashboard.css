@@ -1,0 +1,108 @@
+
+.custom-container {
+  display: flex; /* Ensures sidebar and main content are side-by-side */
+  flex-direction: row; /* Aligns items in a row */
+  height: 100vh; /* Full viewport height */
+  background-color: #f7f8fc; /* Matches sidebar background */
+  margin: 0;
+  padding: 0;
+}
+
+.custom-sidebar {
+  flex: 0 0 25%; /* Sidebar takes up 25% of the width */
+  background-color: #f7f8fc; /* Sidebar background color */
+  color: #fff; /* Text color */
+  padding: 20px; /* Adds spacing inside the sidebar */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better separation */
+}
+
+.custom-sidebar h3 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.custom-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.custom-sidebar li {
+  margin: 15px 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.custom-sidebar li:hover {
+  text-decoration: underline;
+}
+
+.course-section {
+  flex: 1; /* Main content takes up the remaining space */
+  padding: 20px; /* Adds space around the content */
+  background-color: #f7f8fc; /* Main content background */
+  margin: 0 0 0 0;
+}
+
+.course-section h3 {
+  margin-bottom: 20px;
+  color: #2c3e50; /* Title color */
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three cards per row */
+  gap: 20px; /* Space between cards */
+}
+
+.custom-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow */
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Example CSS for card title */
+.p-card-title {
+  font-size: 1.2rem; /* Adjust size */
+  font-weight: bold; /* Make it bold */
+  color: #333; /* Change color */
+  margin-bottom: 0.5rem; /* Add spacing below */
+  text-align: center; /* Center-align the text */
+}
+.card-header {
+  height: 200px; /* Define height for the parent container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card-header img {
+  height: 80%; /* Image height relative to the parent container */
+  width: auto; /* Maintain aspect ratio */
+}
+
+ .p-card-subtitle {
+  font-size: 1.0rem; /* Adjust size */
+  font-weight: bold; /* Make it bold */
+  color: #7f8c8d; /* Change color */
+  margin-bottom: 0.5rem; /* Add spacing below */
+  text-align: center; /* Center-align the text */
+}
+.card-image {
+  height: 50%; /* Set height as 50% of the parent container */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image scales nicely within the bounds */
+}
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.custom-card h4 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.custom-card p {
+  color: #7f8c8d;
+}
