@@ -25,7 +25,7 @@ function GoogleAuthLogin({ closeModal }) {
       dispatch(addUser(user));
       localStorage.setItem('user', JSON.stringify(user));
       localStorage.setItem('token', token);
-
+       
        
       navigate('/user-dashboard');
     } catch (error) {

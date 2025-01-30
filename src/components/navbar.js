@@ -14,12 +14,7 @@ export default function Navbar() {
     const dispatch = useDispatch();
     const dropdownRef = useRef(null); // Create a ref for the dropdown
 
-    useEffect(() => {
-        if (list.length >= 1) {
-            
-        }
-    }, [list.length]);
-
+    
     // Toggle dropdown visibility
     const toggleDropdown = () => {
         setDropdownVisible(!dropdownVisible);
@@ -160,7 +155,7 @@ export default function Navbar() {
 
     const end = (
         <div className="flex align-items-center gap-2" style={{ position: 'relative' }}>
-            {list.length ===0 ? (
+            {list.length === 0 ? (
                 <Link to="/auth">
                      <button className="trackinfo-reviews-button">
                         LOGIN

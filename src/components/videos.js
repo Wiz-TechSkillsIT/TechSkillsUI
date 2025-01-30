@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import "../css/VideoLayout.css";
 import { PanelMenu } from "primereact/panelmenu";
 import { Badge } from "primereact/badge";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import courses from "../data/course_info_main";
-
+import API_BASE_URL from "../config"; // Import API URL
+ 
 const VideosPage = () => {
   const { id } = useParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,18 +14,53 @@ const VideosPage = () => {
   const [videoSrc, setVideoSrc] = useState(""); // State to store the iframe src
   const [expandedModules, setExpandedModules] = useState({}); // Track expanded state of modules
   const [currentVideoTitle, setCurrentVideoTitle] = useState("Loading..."); // Track the current video title
+  const navigate = useNavigate();
+  const [email,setEmail] = useState(null); 
 
   useEffect(() => {
-    // Initialize expandedModules state with the first module expanded
-    const initialState = {};
-    course?.modules.forEach((module, index) => {
-      initialState[module.title] = index === 0; // Expand only the first module
-    });
-    setExpandedModules(initialState);
+    const token = localStorage.getItem("token");
+    const userData = localStorage.getItem("user");
 
-    // Load default video on initial page load
-    fetchVideoData("40c985879d456a75b3c3e0987886037b", "Default Video Title");
-  }, [course]);
+    if (!token) {
+      navigate("/auth"); // Redirect to login if no token found
+      return;
+    }
+
+    if (userData) {
+      const parsedUser = JSON.parse(userData);
+      setEmail(parsedUser.email); // Set email in state
+    }
+  }, [navigate]); // Runs only once on mount
+
+  useEffect(() => {
+    if (!email) return; // Wait for email to be set before calling API
+
+    const checkEnrollment = async () => {
+      const token = localStorage.getItem("token");
+
+      try {
+        const response = await fetch(
+          `${API_BASE_URL}/api/courses/is-enroll/${email}/${id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          navigate("/auth");
+        }
+
+      } catch (error) {
+        navigate("/auth");
+      }
+    };
+
+    checkEnrollment();
+  }, [email, id, navigate]); // Runs when email is set
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);

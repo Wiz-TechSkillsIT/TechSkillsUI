@@ -16,6 +16,10 @@ const user = (state = initialState, action) => {
         return initialState;
     }
 
+    if(action.type === 'CLEAR_LIST'){
+        return { ...state, list: [] };
+    }
+
     return state;
 };
 

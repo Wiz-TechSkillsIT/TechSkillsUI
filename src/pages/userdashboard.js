@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { PanelMenu } from "primereact/panelmenu";
 import { Card } from "primereact/card";
 import "../css/user-dashboard.css";
 import { useNavigate } from "react-router";
 import axios from "axios";
 import { Button } from "primereact/button";
+import { Toast } from 'primereact/toast';
+import { useDispatch } from "react-redux";
 
 const UserDashboard = () => {
   const [userName, setUserName] = useState("");
@@ -12,15 +14,17 @@ const UserDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
+  const toast = useRef(null);
+  const dispatch = useDispatch();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
-
+    
     if (!user || !token) {
       navigate("/auth"); // Redirect to login page if user is not logged in
       return;
     } else if (user.fname) {
+       
       setUserName(user.fname);
     }
 
@@ -48,51 +52,31 @@ const UserDashboard = () => {
     fetchEnrolledCourses();
   }, [navigate]);
 
-  const course = {
-    trackName: `Welcome ${userName}`,
-    level: 1,
-    title: "",
-    modules: [
-      {
-        title: "Navigation",
-        videos: [
-          { title: "Initializing Project", playTime: "02:54", code: "video1" },
-          { title: "Install Dependencies", playTime: "08:39", code: "video2" },
-        ],
-      },
-    ],
-  };
+  const items = [
+    {
+      label: 'Enrolled Courses',
+      icon: 'pi pi-cloud',
+      command: () => {
+       }
+  },
+    {
+      label: 'Profile',
+      icon: 'pi pi-user',
+      command: () => {
+       }
+  },
+    {
+        label: 'Sign Out',
+        icon: 'pi pi-sign-out',
+        command: () => {
+            localStorage.clear();
+            toast.current.show({ severity: 'info', summary: 'Signed out', detail: 'You have logged out', life: 3000 });
+            dispatch({ type: "CLEAR_LIST" });
 
-  const items = course?.modules.map((module) => ({
-    label: module.title,
-    expanded: true, // Ensure module is always expanded
-    template: (item, options) => (
-      <div className="flex align-items-center px-3 py-2">
-        <span className={`pi pi-folder-open text-primary`} />
-        <span className="mx-2">Navigation Menu</span>
-      </div>
-    ),
-    items: module.videos.map((video) => ({
-      label: video.title || "Untitled Video",
-      playTime: video.playTime || "00:00",
-      code: video.code || null,
-      template: (item, options) => (
-        <a
-          className="flex align-items-center px-3 py-2 cursor-pointer"
-          onClick={(e) => {
-            e.preventDefault(); // Prevent menu toggle
-            e.stopPropagation(); // Prevent the menu from collapsing
-            console.log(`Video clicked: ${video.title}`);
-          }}
-        >
-          <span className={`pi pi-video text-primary`} />
-          <span className={`mx-2 ${item.items ? "font-semibold" : ""}`}>{
-            video.title
-          }</span>
-        </a>
-      ),
-    })),
-  }));
+            navigate("/");
+         }
+    }
+];
   
   const loadVideosPage= (courseId)=>{
     navigate(`/course-videos/${courseId}`);
@@ -103,9 +87,10 @@ const UserDashboard = () => {
   {/* Sidebar */}
   <div className="custom-sidebar">
     <div className="card">
-      <h2 className="course-track">{course?.trackName}</h2>
-      <h4 className="course-title">{course?.title}</h4>
-      <PanelMenu model={items} className="w-full md:w-25rem" />
+      <h2 className="course-track">{`Welcome ${userName}`}</h2>
+        <PanelMenu model={items} className="w-full md:w-20rem" />
+        <Toast ref={toast} />
+         
     </div>
   </div>
 
@@ -119,8 +104,7 @@ const UserDashboard = () => {
     ) : (
       <div className="course-grid">
        {enrolledCourses.map((course, idx) => {
-        console.log(course)
-  const header = (
+   const header = (
 <div className="card-header">
 <img 
   alt={course.title} 
