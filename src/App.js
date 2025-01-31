@@ -23,11 +23,13 @@ import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 import TrackInfoNode from './components/trackinfonode';
 import TrackInfoReact from './components/trackinforeact';
 import TrackInfoAngular from './components/trackinfoangular';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const location = useLocation();
   return (
     <div> 
+      <ToastContainer position="top-center" autoClose={3000} />
       <GoogleReCaptchaProvider
       reCaptchaKey="6Ld0FmcqAAAAAGbEOn7GUWGLEwlVUl2NcQs-elNl"  
     >

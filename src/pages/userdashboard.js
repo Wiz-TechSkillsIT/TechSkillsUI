@@ -7,6 +7,8 @@ import axios from "axios";
 import { Button } from "primereact/button";
 import { Toast } from 'primereact/toast';
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
 
 const UserDashboard = () => {
   const [userName, setUserName] = useState("");
