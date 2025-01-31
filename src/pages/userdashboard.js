@@ -8,6 +8,7 @@ import { Button } from "primereact/button";
 import { Toast } from 'primereact/toast';
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import API_BASE_URL from "../config";
 
 
 const UserDashboard = () => {
@@ -33,7 +34,7 @@ const UserDashboard = () => {
     const fetchEnrolledCourses = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5005/api/courses/enrolledCourses/${user.email}`,
+          `${API_BASE_URL}/api/courses/enrolledCourses/${user.email}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

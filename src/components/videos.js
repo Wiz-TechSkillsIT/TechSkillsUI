@@ -91,7 +91,7 @@ const VideosPage = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5005/api/video/vdocipher/otp", {
+      const response = await axios.post(API_BASE_URL +"/api/video/vdocipher/otp", {
         code,
       });
 

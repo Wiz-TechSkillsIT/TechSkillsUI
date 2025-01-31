@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../store/action/user';
 import axios from 'axios';
+import API_BASE_URL from '../config';
 
 const clientId = '308953406479-okjkf1a9506ndq8b4qlk761osghksjm6.apps.googleusercontent.com';
 
@@ -15,7 +16,7 @@ function GoogleAuthLogin({ closeModal }) {
       // Send the Google ID token to the backend
       const { credential: idToken } = response;
 
-      const backendResponse = await axios.post('http://localhost:5005/api/auth/login', {
+      const backendResponse = await axios.post(API_BASE_URL +'/api/auth/login', {
         idToken,
       });
 

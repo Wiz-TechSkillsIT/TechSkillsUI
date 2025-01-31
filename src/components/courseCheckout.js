@@ -5,6 +5,7 @@ import Modal from '../components/Modal';
 import SimpleLogin from '../components/SimpleLogin';
 import '../css/CourseCheckout.css';
 import { toast } from "react-toastify";
+import API_BASE_URL from '../config';
 
 const CourseCheckout = () => {
   const { id } = useParams();
@@ -40,7 +41,7 @@ const CourseCheckout = () => {
       return;
     }
 
-    const orderResponse = await fetch("http://localhost:5005/api/payment/create-order", {
+    const orderResponse = await fetch( API_BASE_URL +"/api/payment/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ amount: 5000, currency: "INR" }) // Amount in INR
@@ -64,7 +65,7 @@ const CourseCheckout = () => {
         console.log("Payment successful:", response);
   
         // 🔹 Verify Payment and Enroll User
-        const verifyResponse = await fetch("http://localhost:5005/api/payment/verify", {
+        const verifyResponse = await fetch(API_BASE_URL +"/api/payment/verify", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
