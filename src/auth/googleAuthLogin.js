@@ -16,7 +16,7 @@ function GoogleAuthLogin({ closeModal }) {
       // Send the Google ID token to the backend
       const { credential: idToken } = response;
 
-      const backendResponse = await axios.post(API_BASE_URL +'/api/auth/login', {
+      const backendResponse = await axios.post('https://api.techskillsit.com/api/auth/login', {
         idToken,
       });
 

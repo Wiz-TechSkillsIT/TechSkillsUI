@@ -111,8 +111,8 @@ const UserDashboard = () => {
 <div className="card-header">
 <img 
   alt={course.title} 
- // src={course?.image ? `/images/${course?.image}` : 'https://primefaces.org/cdn/primereact/images/usercard.png'} 
- src={'/images/nodejs.png'} 
+ src={course?.image ? `/images/${course?.image}` : 'https://primefaces.org/cdn/primereact/images/usercard.png'} 
+ //src={'/images/nodejs.png'} 
  className="card-image"
 
 />
